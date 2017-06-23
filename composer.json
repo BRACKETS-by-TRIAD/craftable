@@ -24,6 +24,12 @@
     "require-dev": {
         "brackets/admin-generator": "dev-master"
     },
+    "autoload": {
+        "classmap": [],
+        "psr-4": {
+            "Brackets\\Simpleweb\\": "src/"
+        }
+    },
     "repositories": [
         {
             "type": "path",
