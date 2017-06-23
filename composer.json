@@ -1,0 +1,27 @@
+{
+    "name": "brackets/simpleweb",
+    "description": "Starting point for developing web solutions",
+    "keywords": ["simpleweb"],
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Pavol Perdík",
+            "email": "palypster@gmail.com",
+            "homepage": "https://www.brackets.sk/en",
+            "role": "Developer"
+        },
+        {
+            "name": "David Běhal",
+            "email": "behal.david@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "brackets/admin": "dev-master"
+    },
+    "require-dev": {
+        "brackets/admin-generator": "dev-master"
+    }
+}
