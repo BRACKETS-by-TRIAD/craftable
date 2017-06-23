@@ -4,15 +4,16 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b62b3de849453e4468961dd96e1c0279",
+    "content-hash": "1d781084017f41914c2c5fc34eb34003",
     "packages": [
         {
             "name": "brackets/admin",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@bitbucket.org:TRIAD-Advertising/admin.git",
-                "reference": "7203ff50e398ead68d1b68e2369e617f3bb37dae"
+            "dist": {
+                "type": "path",
+                "url": "../Admin",
+                "reference": "7203ff50e398ead68d1b68e2369e617f3bb37dae",
+                "shasum": null
             },
             "require": {
                 "illuminate/support": "5.4.*",
@@ -47,8 +48,7 @@
                 "administration",
                 "crud",
                 "simpleweb"
-            ],
-            "time": "2017-06-22 21:58:04"
+            ]
         },
         {
             "name": "doctrine/inflector",
@@ -1627,10 +1627,11 @@
         {
             "name": "brackets/admin-generator",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git",
-                "reference": "c5e1e17566881b662e5d4d9fd7d0d82fb6afdb4e"
+            "dist": {
+                "type": "path",
+                "url": "../AdminGenerator",
+                "reference": "c5e1e17566881b662e5d4d9fd7d0d82fb6afdb4e",
+                "shasum": null
             },
             "require": {
                 "doctrine/dbal": "^2.5",
@@ -1666,8 +1667,7 @@
                 "crud",
                 "generator",
                 "simpleweb"
-            ],
-            "time": "2017-06-23T17:57:51+00:00"
+            ]
         },
         {
             "name": "doctrine/annotations",

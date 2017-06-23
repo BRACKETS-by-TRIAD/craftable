@@ -26,12 +26,12 @@
     },
     "repositories": [
         {
-            "type": "git",
-            "url": "git@bitbucket.org:TRIAD-Advertising\/admin.git"
+            "type": "path",
+            "url": "../AdminGenerator"
         },
         {
-            "type": "git",
-            "url": "git@bitbucket.org:TRIAD-Advertising\/admingenerator.git"
+            "type": "path",
+            "url": "../Admin"
         }
     ]
 }
