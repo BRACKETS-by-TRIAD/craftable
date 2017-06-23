@@ -23,5 +23,15 @@
     },
     "require-dev": {
         "brackets/admin-generator": "dev-master"
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@bitbucket.org:TRIAD-Advertising\/admin.git"
+        },
+        {
+            "type": "git",
+            "url": "git@bitbucket.org:TRIAD-Advertising\/admingenerator.git"
+        }
+    ]
 }
