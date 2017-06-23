@@ -1,6 +1,7 @@
 <?php namespace Brackets\Simpleweb;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 
 class SimplewebInstall extends Command
 {
@@ -33,27 +34,17 @@ class SimplewebInstall extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(Filesystem $files)
     {
 
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Admin\\AdminProvider",
         ]);
 
-        // FIXME finish this
-        $this->info("Please edit a webpack.mix.js so it will look like this:\n\nmix.js('resources/assets/js/app.js', 'public/js')
-    .js(['resources/assets/js/admin/admin.js', 'resources/assets/js/admin/coreui/app.js'], 'public/js/admin')
-    .webpackConfig({
-        resolve: {
-            modules: [
-                path.resolve(__dirname, 'vendor/brackets/admin/resources/assets/js'),
-                'node_modules'
-            ],
-        }
-    })
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .sass('resources/assets/sass/admin/app.scss', 'public/css/admin')
-    .version();");
+        $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__.'/../install-stubs/webpack.mix.js'));
+        $this->info('Webpack configuration updated');
+
+        $this->info('SimpleWEB installed.');
 
     }
 }
