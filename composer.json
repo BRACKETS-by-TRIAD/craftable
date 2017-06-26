@@ -1,19 +1,14 @@
 {
     "name": "brackets/simpleweb",
     "description": "Starting point for developing web solutions",
-    "keywords": ["simpleweb"],
+    "keywords": ["simpleweb", "cms", "crud", "admin", "brackets"],
     "license": "MIT",
     "type": "project",
     "authors": [
         {
             "name": "Pavol Perdík",
-            "email": "palypster@gmail.com",
+            "email": "pavol.perdik@brackets.sk",
             "homepage": "https://www.brackets.sk/en",
-            "role": "Developer"
-        },
-        {
-            "name": "David Běhal",
-            "email": "behal.david@gmail.com",
             "role": "Developer"
         }
     ],
