@@ -2,6 +2,8 @@
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class SimplewebInstall extends Command
 {
@@ -36,7 +38,6 @@ class SimplewebInstall extends Command
      */
     public function handle(Filesystem $files)
     {
-
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Admin\\AdminProvider",
         ]);
@@ -44,7 +45,12 @@ class SimplewebInstall extends Command
         $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__.'/../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
-        $this->info('SimpleWEB installed.');
+        $installDatepicker = new Process('npm install vue-flatpickr-component --save');
+        $installDatepicker->run();
+        if (!$installDatepicker->isSuccessful()) {
+                $this->error('Failed to install datepicker, please run "npm install vue-flatpickr-component --save" manually.');
+        }
 
+        $this->info('SimpleWEB installed.');
     }
 }
