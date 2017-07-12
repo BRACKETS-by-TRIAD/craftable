@@ -37,6 +37,10 @@ class SimplewebInstall extends Command
     public function handle(Filesystem $files)
     {
 
+        //TODO publish migration from AdminAuth
+        //TODO Remove User from App/User
+        //TODO change config/auth.php to use App/Models/User::class
+
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Admin\\AdminProvider",
         ]);
