@@ -49,10 +49,10 @@ class SimplewebInstall extends Command
         $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__.'/../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
-        $installDatepicker = new Process('npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal --save');
+        $installDatepicker = new Process('npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect --save');
         $installDatepicker->run();
         if (!$installDatepicker->isSuccessful()) {
-                $this->error('Failed to install npm packages, please run "npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal --save" manually.');
+                $this->error('Failed to install npm packages, please run "npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect --save" manually.');
         }
 
         $this->info('SimpleWEB installed.');
