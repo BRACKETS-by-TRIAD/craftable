@@ -26,6 +26,9 @@ class SimplewebProvider extends ServiceProvider
         $this->app->register(\Spatie\Permission\PermissionServiceProvider::class);
         $this->app->register(\Brackets\Admin\AdminProvider::class);
         $this->app->register(\Brackets\AdminGenerator\AdminGeneratorProvider::class);
+
+        $this->app->register(\Brackets\AdminAuth\Providers\AdminAuthProvider::class);
+        $this->app->register(\Brackets\AdminTranslations\AdminTranslationsProvider::class);
     }
 
     /**
