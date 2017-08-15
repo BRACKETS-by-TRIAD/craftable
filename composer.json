@@ -28,12 +28,28 @@
     },
     "repositories": [
         {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/admin.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/admintranslations.git"
+        },
+        {
+            "type": "path",
+            "url": "../Admin"
+        },
+        {
             "type": "path",
             "url": "../AdminGenerator"
         },
         {
             "type": "path",
-            "url": "../Admin"
+            "url": "../AdminTranslations"
         }
     ]
 }
