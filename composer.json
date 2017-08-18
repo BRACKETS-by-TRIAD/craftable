@@ -15,6 +15,10 @@
     "require": {
         "php": ">=7.0.0",
         "brackets/admin": "dev-master",
+        "brackets/admin-auth": "dev-master",
+        "brackets/admin-generator": "dev-master",
+        "brackets/admin-translations": "dev-master",
+        "brackets/media": "dev-master",
         "spatie/laravel-permission": "^2.4"
     },
     "require-dev": {
