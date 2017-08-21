@@ -49,6 +49,7 @@ class SimplewebInstall extends Command
         $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__.'/../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
+        // FIXME should it be here? Maybe it solves the problem Suballe was addressing
         $installDatepicker = new Process('npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect --save');
         $installDatepicker->run();
         if (!$installDatepicker->isSuccessful()) {
