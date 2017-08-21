@@ -38,18 +38,6 @@
         {
             "type": "vcs",
             "url": "git@bitbucket.org:TRIAD-Advertising/admintranslations.git"
-        },
-        {
-            "type": "path",
-            "url": "../Admin"
-        },
-        {
-            "type": "path",
-            "url": "../AdminGenerator"
-        },
-        {
-            "type": "path",
-            "url": "../AdminTranslations"
         }
     ]
 }
