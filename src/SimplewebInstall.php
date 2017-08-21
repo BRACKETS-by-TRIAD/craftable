@@ -50,10 +50,10 @@ class SimplewebInstall extends Command
         $this->info('Webpack configuration updated');
 
         // FIXME should it be here? Maybe it solves the problem Suballe was addressing
-        $installDatepicker = new Process('npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect --save');
+        $installDatepicker = new Process('npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect moment --save');
         $installDatepicker->run();
         if (!$installDatepicker->isSuccessful()) {
-                $this->error('Failed to install npm packages, please run "npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect --save" manually.');
+                $this->error('Failed to install npm packages, please run "npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect moment --save" manually.');
         }
 
         $this->info('SimpleWEB installed.');
