@@ -17,6 +17,7 @@
         "brackets/admin": "dev-master",
         "brackets/admin-auth": "dev-master",
         "brackets/admin-translations": "dev-master",
+        "brackets/admin-listing": "dev-master",
         "brackets/media": "dev-master",
         "spatie/laravel-permission": "^2.4"
     },
@@ -36,11 +37,27 @@
         },
         {
             "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
+            "url": "git@bitbucket.org:TRIAD-Advertising/adminauth.git"
         },
         {
             "type": "vcs",
             "url": "git@bitbucket.org:TRIAD-Advertising/admintranslations.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/translatable.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/adminlisting.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/media.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
         }
     ]
 }
