@@ -32,6 +32,7 @@ class SimplewebProvider extends ServiceProvider
         $this->app->register(\Brackets\AdminAuth\Providers\AdminAuthProvider::class);
         $this->app->register(\Brackets\AdminTranslations\AdminTranslationsProvider::class);
         $this->app->register(\Brackets\Media\MediaProvider::class);
+        $this->app->register(\Brackets\Translatable\TranslatableProvider::class);
     }
 
     /**

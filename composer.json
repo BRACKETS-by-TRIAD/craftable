@@ -19,6 +19,7 @@
         "brackets/admin-auth": "dev-master",
         "brackets/admin-translations": "dev-master",
         "brackets/media": "dev-master",
+        "brackets/translatable": "dev-master",
         "spatie/laravel-permission": "^2.4"
     },
     "require-dev": {
@@ -42,6 +43,10 @@
         {
             "type": "vcs",
             "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/translatable.git"
         },
         {
             "type": "vcs",
