@@ -24,7 +24,6 @@ class SimplewebProvider extends ServiceProvider
         }
 
         // In Laravel 5.5 these all is going to be deprecated
-        $this->app->register(\Spatie\Permission\PermissionServiceProvider::class);
         $this->app->register(\Brackets\Admin\AdminProvider::class);
         $this->app->register(\Brackets\AdminListing\AdminListingServiceProvider::class);
         // FIXME this should not be here, because this package is dev dependency, but it's going to be solved with auto-discovery in Laravel 5.5
@@ -33,6 +32,7 @@ class SimplewebProvider extends ServiceProvider
         $this->app->register(\Brackets\AdminTranslations\AdminTranslationsProvider::class);
         $this->app->register(\Brackets\Media\MediaProvider::class);
         $this->app->register(\Brackets\Translatable\TranslatableProvider::class);
+//        $this->app->register(\Spatie\Permission\PermissionServiceProvider::class);
     }
 
     /**
