@@ -38,14 +38,57 @@ class SimplewebInstall extends Command
      */
     public function handle(Filesystem $files)
     {
-        //TODO publish migration from AdminAuth
-        //TODO Remove User from App/User
-        //TODO change config/auth.php to use App/Models/User::class
+        //TODO publish migration, config and lang
 
+        /**
+         * Publish all
+         */
+        //Spatie Permission
+        $this->call('vendor:publish', [
+            '--provider' => 'Spatie\\Permission\\PermissionServiceProvider',
+            '--tag' => 'migrations'
+        ]);
+        $this->call('vendor:publish', [
+            '--provider' => 'Spatie\\Permission\\PermissionServiceProvider',
+            '--tag' => 'config'
+        ]);
+
+        //Admin
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Admin\\AdminProvider",
         ]);
 
+        //Admin Auth
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\AdminAuth\\AdminAuthProvider",
+        ]);
+
+        //Admin Translations
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\AdminTranslations\\AdminTranslationsProvider",
+        ]);
+
+        //Media
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\Media\\MediaProvider",
+        ]);
+
+        //Media
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\Translatable\\TranslatableProvider",
+        ]);
+
+        /**
+         * Migrate
+         */
+        $this->call('migrate');
+
+        //TODO Remove User from App/User
+        //TODO change config/auth.php to use App/Models/User::class
+
+        /**
+         * Change webpack
+         */
         $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__.'/../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
