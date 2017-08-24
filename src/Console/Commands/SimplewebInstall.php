@@ -39,6 +39,8 @@ class SimplewebInstall extends Command
      */
     public function handle(Filesystem $files)
     {
+        $this->info('Crafting Simpleweb...');
+
         //TODO publish migration, config and lang
 
         /**
@@ -114,7 +116,7 @@ class SimplewebInstall extends Command
         /**
          * Change webpack
          */
-        $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__ . '/../install-stubs/webpack.mix.js'));
+        $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__ . '/../../../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
         // FIXME should it be here? Maybe it solves the problem Suballe was addressing
