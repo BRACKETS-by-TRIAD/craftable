@@ -1,4 +1,4 @@
-mix.js(['resources/assets/admin/js/admin.js'], 'public/admin/js')
+mix.js(['resources/assets/admin/js/admin.js'], 'public/build/admin/js')
 	.webpackConfig({
 		resolve: {
 			modules: [
@@ -7,7 +7,7 @@ mix.js(['resources/assets/admin/js/admin.js'], 'public/admin/js')
 			],
 		}
 	})
-	.sass('resources/assets/admin/scss/app.scss', 'public/admin/css')
+	.sass('resources/assets/admin/scss/app.scss', 'public/build/admin/css')
 	.extract([
 		'vue',
 		'jquery',
