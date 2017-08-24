@@ -37,16 +37,16 @@
             "url": "git@bitbucket.org:TRIAD-Advertising/admin.git"
         },
         {
-          "type": "vcs",
-          "url": "git@bitbucket.org:TRIAD-Advertising/adminlisting.git"
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/adminlisting.git"
         },
         {
             "type": "vcs",
             "url": "git@bitbucket.org:TRIAD-Advertising/adminauth.git"
         },
         {
-          "type": "vcs",
-          "url": "git@bitbucket.org:TRIAD-Advertising/admintranslations.git"
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/admintranslations.git"
         },
         {
             "type": "vcs",
@@ -57,8 +57,8 @@
             "url": "git@bitbucket.org:TRIAD-Advertising/media.git"
         },
         {
-          "type": "vcs",
-          "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
+            "type": "vcs",
+            "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
         }
     ]
 }
