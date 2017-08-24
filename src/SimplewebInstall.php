@@ -83,8 +83,20 @@ class SimplewebInstall extends Command
          */
         $this->call('migrate');
 
-        //TODO Remove User from App/User
+        //TODO Generate user with model
+        $this->call('admin:generate:user', [
+            '--model-name' => "App\\Models\\User",
+            '--generate-model' => true,
+            '--force' => true,
+        ]);
+
         //TODO change config/auth.php to use App/Models/User::class
+        $this->pregReplaceInFile($files, config_path('auth.php'),
+            '            \'model\' => App\User::class,',
+            '            \'model\' => App\Models\User::class,');
+
+        //TODO Remove User from App/User
+        $files->delete(app_path('User.php'));
 
         /**
          * Change webpack
@@ -100,5 +112,14 @@ class SimplewebInstall extends Command
         }
 
         $this->info('SimpleWEB installed.');
+    }
+
+    private function pregReplaceInFile(Filesystem $files, $fileName, $find, $replaceWith, $matchExists = null) {
+        $c = $files->get($fileName);
+        if (is_null($matchExists) || !preg_match($matchExists, $c)) {
+            return $files->put($fileName, preg_replace($find, $replaceWith, $c));
+        } else {
+            return false;
+        }
     }
 }
