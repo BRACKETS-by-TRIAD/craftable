@@ -23,9 +23,6 @@
         "spatie/laravel-permission": "^2.4",
         "spatie/laravel-backup": "^4.19"
     },
-    "require-dev": {
-        "brackets/admin-generator": "dev-master"
-    },
     "autoload": {
         "classmap": [],
         "psr-4": {
