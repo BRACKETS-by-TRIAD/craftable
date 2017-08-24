@@ -21,7 +21,7 @@ class SimplewebServiceProvider extends ServiceProvider
                 $timestamp = date('Y_m_d_His', time());
 
                 $this->publishes([
-                    __DIR__.'/../install-stubs/database/migrations/fill_default_user_and_permissions.php' => database_path('migrations').'/'.$timestamp.'fill_default_user_and_permissions.php',
+                    __DIR__.'/../install-stubs/database/migrations/fill_default_user_and_permissions.php' => database_path('migrations').'/'.$timestamp.'_fill_default_user_and_permissions.php',
                 ], 'migrations');
             }
         }
