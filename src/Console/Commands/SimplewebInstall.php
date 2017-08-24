@@ -67,6 +67,7 @@ class SimplewebInstall extends Command
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\AdminAuth\\AdminAuthServiceProvider",
         ]);
+        sleep(1);
 
         //Admin Translations
         $this->call('vendor:publish', [
