@@ -91,9 +91,10 @@ class SimplewebInstall extends Command
         ]);
 
         //TODO change config/auth.php to use App/Models/User::class
-        $this->pregReplaceInFile($files, config_path('auth.php'),
-            '            \'model\' => App\User::class,',
-            '            \'model\' => App\Models\User::class,');
+        $this->pregReplaceInFile($files,
+            config_path('auth.php'),
+            "App\User::class",
+            "App\Models\User::class");
 
         //TODO Remove User from App/User
         $files->delete(app_path('User.php'));
