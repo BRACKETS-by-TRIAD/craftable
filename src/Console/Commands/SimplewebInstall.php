@@ -1,4 +1,4 @@
-<?php namespace Brackets\Simpleweb;
+<?php namespace Brackets\Simpleweb\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -55,27 +55,32 @@ class SimplewebInstall extends Command
 
         //Admin
         $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Admin\\AdminProvider",
+            '--provider' => "Brackets\\Admin\\AdminServiceProvider",
         ]);
 
         //Admin Auth
         $this->call('vendor:publish', [
-            '--provider' => "Brackets\\AdminAuth\\AdminAuthProvider",
+            '--provider' => "Brackets\\AdminAuth\\AdminAuthServiceProvider",
         ]);
 
         //Admin Translations
         $this->call('vendor:publish', [
-            '--provider' => "Brackets\\AdminTranslations\\AdminTranslationsProvider",
+            '--provider' => "Brackets\\AdminTranslations\\AdminTranslationsServiceProvider",
         ]);
 
         //Media
         $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Media\\MediaProvider",
+            '--provider' => "Brackets\\Media\\MediaServiceProvider",
         ]);
 
         //Media
         $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Translatable\\TranslatableProvider",
+            '--provider' => "Brackets\\Translatable\\TranslatableServiceProvider",
+        ]);
+
+        //Media
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\Simpleweb\\SimplewebServiceProvider",
         ]);
 
         /**
@@ -102,7 +107,7 @@ class SimplewebInstall extends Command
         /**
          * Change webpack
          */
-        $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__.'/../install-stubs/webpack.mix.js'));
+        $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__ . '/../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
         // FIXME should it be here? Maybe it solves the problem Suballe was addressing
