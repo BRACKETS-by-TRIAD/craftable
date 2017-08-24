@@ -71,8 +71,6 @@ class SimplewebInstall extends Command
             '--provider' => "Brackets\\AdminAuth\\AdminAuthServiceProvider",
         ]);
 
-        sleep(2);
-
         //Admin Translations
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\AdminTranslations\\AdminTranslationsServiceProvider",
@@ -119,12 +117,21 @@ class SimplewebInstall extends Command
         $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__ . '/../../../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
-        // FIXME should it be here? Maybe it solves the problem Suballe was addressing
-        $installDatepicker = new Process('npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect moment --save');
-        $installDatepicker->run();
-        if (!$installDatepicker->isSuccessful()) {
-                $this->error('Failed to install npm packages, please run "npm install vue-flatpickr-component vue-quill-editor vue-notification vue-js-modal vue-multiselect moment --save" manually.');
-        }
+        //Change package.json
+        $this->info('Changing package.json');
+        $packageJsonFile = base_path('package.json');
+        $packageJson = $files->get($packageJsonFile);
+        $packageJsonContent = json_decode($packageJson, JSON_OBJECT_AS_ARRAY);
+        $packageJsonContent['devDependencies']['vee-validate'] = '^2.0.0-rc.13';
+        $packageJsonContent['devDependencies']['vue'] = '^2.3.4';
+        $packageJsonContent['devDependencies']['vue-flatpickr-component'] = '^2.4.1';
+        $packageJsonContent['devDependencies']['vue-js-modal'] = '^1.2.8';
+        $packageJsonContent['devDependencies']['vue-multiselect'] = '^2.0.2';
+        $packageJsonContent['devDependencies']['vue-notification'] = '^1.3.2';
+        $packageJsonContent['devDependencies']['vue-quill-editor'] = '^2.3.0';
+        $packageJsonContent['devDependencies']['moment'] = '^2.18.1';
+        $files->put($packageJsonFile, json_encode($packageJsonContent, JSON_PRETTY_PRINT));
+        $this->info('package.json changed');
 
         $this->info('SimpleWEB installed.');
     }
