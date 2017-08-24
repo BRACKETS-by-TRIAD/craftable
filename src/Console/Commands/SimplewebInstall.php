@@ -2,6 +2,7 @@
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -102,11 +103,10 @@ class SimplewebInstall extends Command
             '--force' => true,
         ]);
 
-        //TODO change config/auth.php to use App/Models/User::class
-        $this->pregReplaceInFile($files,
-            config_path('auth.php'),
-            "App\User::class",
-            "App\Models\User::class");
+        //change config/auth.php to use App/Models/User::class
+        $this->strReplaceInFile(config_path('auth.php'),
+            "App\\User::class",
+            "App\\Models\\User::class");
 
         //TODO Remove User from App/User
         $files->delete(app_path('User.php'));
@@ -127,12 +127,8 @@ class SimplewebInstall extends Command
         $this->info('SimpleWEB installed.');
     }
 
-    private function pregReplaceInFile(Filesystem $files, $fileName, $find, $replaceWith, $matchExists = null) {
-        $c = $files->get($fileName);
-        if (is_null($matchExists) || !preg_match($matchExists, $c)) {
-            return $files->put($fileName, preg_replace($find, $replaceWith, $c));
-        } else {
-            return false;
-        }
+    private function strReplaceInFile($fileName, $find, $replaceWith) {
+        $content = File::get($fileName);
+        return File::put($fileName, str_replace($find, $replaceWith, $content));
     }
 }
