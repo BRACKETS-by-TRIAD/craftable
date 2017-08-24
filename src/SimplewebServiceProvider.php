@@ -35,7 +35,8 @@ class SimplewebServiceProvider extends ServiceProvider
         $this->app->register(\Brackets\AdminTranslations\AdminTranslationsServiceProvider::class);
         $this->app->register(\Brackets\Media\MediaServiceProvider::class);
         $this->app->register(\Brackets\Translatable\TranslatableServiceProvider::class);
-//        $this->app->register(\Spatie\Permission\PermissionServiceProvider::class);
+        $this->app->register(\Spatie\Permission\PermissionServiceProvider::class);
+        $this->app->register(\Spatie\Backup\BackupServiceProvider::class);
     }
 
     /**

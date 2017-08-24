@@ -20,7 +20,8 @@
         "brackets/admin-translations": "dev-master",
         "brackets/translatable": "dev-master",
         "brackets/media": "dev-master",
-        "spatie/laravel-permission": "^2.4"
+        "spatie/laravel-permission": "^2.4",
+        "spatie/laravel-backup": "^4.19"
     },
     "require-dev": {
         "brackets/admin-generator": "dev-master"
