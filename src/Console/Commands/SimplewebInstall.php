@@ -119,7 +119,7 @@ class SimplewebInstall extends Command
         base_path(\'vendor/brackets/admin-auth/src\'),
         base_path(\'vendor/brackets/admin-auth/resources\'),');
         $this->call('admin-translations:scan-and-save', [
-            'paths' => config('admin-translations.scanned_directories') + ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources'],
+            'paths' => array_merge(config('admin-translations.scanned_directories'), ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
         ]);
         $this->info('Translations stored');
 
