@@ -111,6 +111,18 @@ class SimplewebInstall extends Command
         //TODO Remove User from App/User
         $files->delete(app_path('User.php'));
 
+        $this->info('Scanning codebase and storing all translations');
+        $this->strReplaceInFile(config_path('admin-translations.php'),
+            '// here you can add your own directories',
+            '// here you can add your own directories
+        // base_path(\'routes\'), // uncomment if you have translations in your routes i.e. you have localized URLs
+        base_path(\'vendor/Brackets/AdminAuth/src\'),
+        base_path(\'vendor/Brackets/AdminAuth/resources\'),');
+        $this->call('admin-translations:scan-and-save', [
+            'paths' => config('admin-translations.scanned_directories'),
+        ]);
+        $this->info('Translations stored');
+
         /**
          * Change webpack
          */
