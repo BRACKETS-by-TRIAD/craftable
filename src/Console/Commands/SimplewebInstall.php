@@ -116,8 +116,8 @@ class SimplewebInstall extends Command
             '// here you can add your own directories',
             '// here you can add your own directories
         // base_path(\'routes\'), // uncomment if you have translations in your routes i.e. you have localized URLs
-        base_path(\'vendor/Brackets/AdminAuth/src\'),
-        base_path(\'vendor/Brackets/AdminAuth/resources\'),');
+        base_path(\'vendor/brackets/admin-auth/src\'),
+        base_path(\'vendor/brackets/admin-auth/resources\'),');
         $this->call('admin-translations:scan-and-save', [
             'paths' => config('admin-translations.scanned_directories'),
         ]);
