@@ -96,7 +96,7 @@ class SimplewebInstall extends Command
          */
         $this->call('migrate');
 
-        //TODO Generate user with model
+        // Generate user with model
         $this->call('admin:generate:user', [
             '--model-name' => "App\\Models\\User",
             '--generate-model' => true,
@@ -108,8 +108,11 @@ class SimplewebInstall extends Command
             "App\\User::class",
             "App\\Models\\User::class");
 
-        //TODO Remove User from App/User
+        // Remove User from App/User
         $files->delete(app_path('User.php'));
+
+        // Generate user profile
+        $this->call('admin:generate:user:profile');
 
         $this->info('Scanning codebase and storing all translations');
         $this->strReplaceInFile(config_path('admin-translations.php'),
