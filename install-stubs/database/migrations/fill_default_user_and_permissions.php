@@ -14,15 +14,34 @@ class FillDefaultUserAndPermissions extends Migration
 
     public function __construct()
     {
+
+        $defaultPermissions = collect([
+            // view admin as a whole
+            'admin',
+
+            // manage translations
+            'admin.translation.index',
+            'admin.translation.edit',
+
+            // manage users (access)
+            'admin.user.index',
+            'admin.user.create',
+            'admin.user.edit',
+            'admin.user.delete',
+
+            // ability to upload
+            'admin.upload',
+        ]);
+
         //Add new teams
-        $this->permissions = [
-            [
-                'name' => 'admin',
+        $this->permissions = $defaultPermissions->map(function($permission){
+            return [
+                'name' => $permission,
                 'guard_name' => config('auth.defaults.guard'),
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
-            ],
-        ];
+            ];
+        })->toArray();
 
         //Add new teams
         $this->roles = [
@@ -31,9 +50,7 @@ class FillDefaultUserAndPermissions extends Migration
                 'guard_name' => config('auth.defaults.guard'),
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
-                'permissions' => [
-                    'admin',
-                ],
+                'permissions' => $defaultPermissions,
             ],
         ];
 
