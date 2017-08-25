@@ -3,6 +3,7 @@ mix.js(['resources/assets/admin/js/admin.js'], 'public/build/admin/js')
 		resolve: {
 			modules: [
 				path.resolve(__dirname, 'vendor/brackets/admin/resources/assets/js'),
+				path.resolve(__dirname, 'vendor/brackets/admin-translations/resources/assets/js'),
 				'node_modules'
 			],
 		}

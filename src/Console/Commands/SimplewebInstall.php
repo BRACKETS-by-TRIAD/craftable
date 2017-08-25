@@ -117,6 +117,13 @@ class SimplewebInstall extends Command
         $files->append('webpack.mix.js', "\n\n".$files->get(__DIR__ . '/../../../install-stubs/webpack.mix.js'));
         $this->info('Webpack configuration updated');
 
+        // register translation assets
+        $files->append(resource_path('assets/admin/js/index.js'), "
+require('translation/Listing')
+require('translation/Form')
+");
+        $this->info('Admin Translation assets registered');
+
         //Change package.json
         $this->info('Changing package.json');
         $packageJsonFile = base_path('package.json');
