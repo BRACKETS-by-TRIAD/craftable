@@ -20,8 +20,8 @@
         "brackets/admin-translations": "dev-master",
         "brackets/translatable": "dev-master",
         "brackets/media": "dev-master",
-        "spatie/laravel-permission": "^2.4",
-        "spatie/laravel-backup": "^4.19"
+        "spatie/laravel-permission": "^2.5",
+        "spatie/laravel-backup": "^5.0"
     },
     "autoload": {
         "classmap": [],
@@ -58,5 +58,12 @@
             "type": "vcs",
             "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Brackets\\Simpleweb\\SimplewebServiceProvider"
+            ]
+        }
+    }
 }
