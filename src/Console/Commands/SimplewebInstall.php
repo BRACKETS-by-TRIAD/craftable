@@ -168,6 +168,7 @@ class SimplewebInstall extends Command
         $packageJsonContent['devDependencies']['vue-notification'] = '^1.3.2';
         $packageJsonContent['devDependencies']['vue-quill-editor'] = '^2.3.0';
         $packageJsonContent['devDependencies']['moment'] = '^2.18.1';
+        $packageJsonContent['devDependencies']['vue2-dropzone'] = '^2.3.5';
         $files->put($packageJsonFile, json_encode($packageJsonContent, JSON_PRETTY_PRINT));
         $this->info('package.json changed');
     }
