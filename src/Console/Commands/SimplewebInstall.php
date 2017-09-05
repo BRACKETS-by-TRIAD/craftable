@@ -20,17 +20,7 @@ class SimplewebInstall extends Command
      *
      * @var string
      */
-    protected $description = 'Install a SimpleWEB instance';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $description = 'Install a SimpleWEB (brackets/simpleweb) instance';
 
     /**
      * Execute the console command.
@@ -73,29 +63,15 @@ class SimplewebInstall extends Command
             '--provider' => "Spatie\\Backup\\BackupServiceProvider",
         ]);
 
-        //Admin
-        $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Admin\\AdminServiceProvider",
-        ]);
-
+        // TODO replace with admin-auth:install
         //Admin Auth
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\AdminAuth\\AdminAuthServiceProvider",
         ]);
 
-        //Admin Translations
-        $this->call('vendor:publish', [
-            '--provider' => "Brackets\\AdminTranslations\\AdminTranslationsServiceProvider",
-        ]);
-
         //Media
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Media\\MediaServiceProvider",
-        ]);
-
-        //Media
-        $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Translatable\\TranslatableServiceProvider",
         ]);
 
         //Simpleweb
@@ -127,6 +103,7 @@ class SimplewebInstall extends Command
         $this->call('admin:generate:user:profile');
     }
 
+    // TODO should it still be here?
     private function scanAndSaveTranslations() {
         // Scan translations
         $this->info('Scanning codebase and storing all translations');
@@ -147,33 +124,9 @@ class SimplewebInstall extends Command
      * @param Filesystem $files
      */
     private function frontendAdjustments(Filesystem $files) {
-        // webpack
-        $files->append('webpack.mix.js', "\n\n" . $files->get(__DIR__ . '/../../../install-stubs/webpack.mix.js'));
-        $this->info('Webpack configuration updated');
-
-        // register translation assets
-        $files->append(resource_path('assets/admin/js/index.js'), "\nimport 'translation';\n");
-        $this->info('Admin Translation assets registered');
-
+        // TODO replace with admin-auth:install
         // register auth assets
         $files->append(resource_path('assets/admin/js/index.js'), "\nimport 'auth';\n");
         $this->info('Admin Auth assets registered');
-
-        //Change package.json
-        $this->info('Changing package.json');
-        $packageJsonFile = base_path('package.json');
-        $packageJson = $files->get($packageJsonFile);
-        $packageJsonContent = json_decode($packageJson, JSON_OBJECT_AS_ARRAY);
-        $packageJsonContent['devDependencies']['vee-validate'] = '^2.0.0-rc.13';
-        $packageJsonContent['devDependencies']['vue'] = '^2.3.4';
-        $packageJsonContent['devDependencies']['vue-flatpickr-component'] = '^2.4.1';
-        $packageJsonContent['devDependencies']['vue-js-modal'] = '^1.2.8';
-        $packageJsonContent['devDependencies']['vue-multiselect'] = '^2.0.2';
-        $packageJsonContent['devDependencies']['vue-notification'] = '^1.3.2';
-        $packageJsonContent['devDependencies']['vue-quill-editor'] = '^2.3.0';
-        $packageJsonContent['devDependencies']['moment'] = '^2.18.1';
-        $packageJsonContent['devDependencies']['vue2-dropzone'] = '^2.3.5';
-        $files->put($packageJsonFile, json_encode($packageJsonContent, JSON_PRETTY_PRINT));
-        $this->info('package.json changed');
     }
 }
