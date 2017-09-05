@@ -155,6 +155,10 @@ class SimplewebInstall extends Command
         $files->append(resource_path('assets/admin/js/index.js'), "\nimport 'translation';\n");
         $this->info('Admin Translation assets registered');
 
+        // register auth assets
+        $files->append(resource_path('assets/admin/js/index.js'), "\nimport 'auth';\n");
+        $this->info('Admin Auth assets registered');
+
         //Change package.json
         $this->info('Changing package.json');
         $packageJsonFile = base_path('package.json');
