@@ -33,6 +33,12 @@ class SimplewebInstall extends Command
 
         $this->publishAllVendors();
 
+        $this->call('admin-ui:install');
+
+//        $this->call('admin-auth:install');
+
+        $this->call('admin-translations:install');
+
         $this->generateUserStuff($files);
 
         $this->scanAndSaveTranslations();
@@ -81,6 +87,7 @@ class SimplewebInstall extends Command
     }
 
     private function generateUserStuff(Filesystem $files) {
+        // TODO this is probably redundant?
         // Migrate
         $this->call('migrate');
 
