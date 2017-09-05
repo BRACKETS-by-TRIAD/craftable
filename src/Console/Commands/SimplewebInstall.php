@@ -35,15 +35,13 @@ class SimplewebInstall extends Command
 
         $this->call('admin-ui:install');
 
-//        $this->call('admin-auth:install');
+        $this->call('admin-auth:install');
 
         $this->call('admin-translations:install');
 
         $this->generateUserStuff($files);
 
         $this->scanAndSaveTranslations();
-
-        $this->frontendAdjustments($files);
 
         $this->info('SimpleWEB crafted :)');
     }
@@ -67,12 +65,6 @@ class SimplewebInstall extends Command
         //Spatie Backup
         $this->call('vendor:publish', [
             '--provider' => "Spatie\\Backup\\BackupServiceProvider",
-        ]);
-
-        // TODO replace with admin-auth:install
-        //Admin Auth
-        $this->call('vendor:publish', [
-            '--provider' => "Brackets\\AdminAuth\\AdminAuthServiceProvider",
         ]);
 
         //Media
@@ -127,13 +119,4 @@ class SimplewebInstall extends Command
         ]);
     }
 
-    /**
-     * @param Filesystem $files
-     */
-    private function frontendAdjustments(Filesystem $files) {
-        // TODO replace with admin-auth:install
-        // register auth assets
-        $files->append(resource_path('assets/admin/js/index.js'), "\nimport 'auth';\n");
-        $this->info('Admin Auth assets registered');
-    }
 }
