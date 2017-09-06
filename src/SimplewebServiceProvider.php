@@ -34,6 +34,6 @@ class SimplewebServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }
