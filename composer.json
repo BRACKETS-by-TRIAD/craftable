@@ -1,7 +1,17 @@
 {
     "name": "brackets/simpleweb",
-    "description": "Starting point for developing web solutions",
-    "keywords": ["simpleweb", "cms", "crud", "admin", "brackets"],
+    "description": "Administration toolkit - starting point for developing administration interface",
+    "keywords": [
+        "simpleweb",
+        "crud",
+        "brackets",
+        "admin",
+        "administration",
+        "toolkit",
+        "framework",
+        "cms",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "authors": [
@@ -10,11 +20,17 @@
             "email": "pavol.perdik@brackets.sk",
             "homepage": "https://www.brackets.sk/en",
             "role": "Developer"
+        },
+        {
+            "name": "David Běhal",
+            "email": "david.behal@brackets.sk",
+            "homepage": "https://www.brackets.sk/en",
+            "role": "Developer"
         }
     ],
     "require": {
         "php": ">=7.0.0",
-        "brackets/admin": "dev-master",
+        "brackets/admin-ui": "dev-master",
         "brackets/admin-listing": "dev-master",
         "brackets/admin-auth": "dev-master",
         "brackets/admin-translations": "dev-master",
@@ -28,36 +44,6 @@
             "Brackets\\Simpleweb\\": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/admin.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/adminlisting.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/adminauth.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/admintranslations.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/translatable.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/media.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:TRIAD-Advertising/admingenerator.git"
-        }
-    ],
     "extra": {
         "laravel": {
             "providers": [
