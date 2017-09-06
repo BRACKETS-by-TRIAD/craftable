@@ -19,7 +19,6 @@
         "brackets/admin-auth": "dev-master",
         "brackets/admin-translations": "dev-master",
         "brackets/translatable": "dev-master",
-        "brackets/media": "dev-master",
         "spatie/laravel-permission": "^2.5",
         "spatie/laravel-backup": "^5.0"
     },

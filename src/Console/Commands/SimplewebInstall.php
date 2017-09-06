@@ -37,9 +37,9 @@ class SimplewebInstall extends Command
 
         $this->call('admin-auth:install');
 
-        $this->call('admin-translations:install');
-
         $this->generateUserStuff($files);
+
+        $this->call('admin-translations:install');
 
         $this->scanAndSaveTranslations();
 
