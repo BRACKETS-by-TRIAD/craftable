@@ -72,7 +72,7 @@ npm install
 npm run dev
 ```
 
-## Basics ##
+## Basic usage ##
 
 Once installed, navigate your browser to `/admin/login`. You should be able to see login screen. Use these credentials:
 - E-mail: `administrator@brackets.sk`
@@ -81,6 +81,10 @@ Once installed, navigate your browser to `/admin/login`. You should be able to s
 After successful auhentication you should be able to see at least:
 - Users CRUD
 - Translations manager
+
+## Documentation ##
+
+You can find full documentation of this package and other our packages Simpleweb uses at https://docs.brackets.sk/#/simpleweb.
 
 ## Where to go next? ##
 
