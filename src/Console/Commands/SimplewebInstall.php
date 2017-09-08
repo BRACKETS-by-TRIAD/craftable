@@ -43,6 +43,8 @@ class SimplewebInstall extends Command
 
         $this->scanAndSaveTranslations();
 
+        $this->call('admin-listing:install');
+
         $this->info('SimpleWEB crafted :)');
     }
 
