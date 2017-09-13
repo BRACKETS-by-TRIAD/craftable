@@ -30,11 +30,11 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "brackets/admin-ui": "@beta",
-        "brackets/admin-listing": "@beta",
-        "brackets/admin-auth": "@beta",
-        "brackets/admin-translations": "@beta",
-        "brackets/translatable": "@beta",
+        "brackets/admin-ui": "@dev",
+        "brackets/admin-listing": "@dev",
+        "brackets/admin-auth": "@dev",
+        "brackets/admin-translations": "@dev",
+        "brackets/translatable": "@dev",
         "spatie/laravel-permission": "^2.5",
         "spatie/laravel-backup": "^5.0"
     },
