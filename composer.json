@@ -1,6 +1,6 @@
 {
     "name": "brackets/simpleweb",
-    "description": "Administration toolkit - starting point for developing administration interface",
+    "description": "Administration toolkit for Laravel 5 - starting point for developing administration interface",
     "keywords": [
         "simpleweb",
         "crud",
