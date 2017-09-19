@@ -35,6 +35,7 @@
         "brackets/admin-auth": "@dev",
         "brackets/admin-translations": "@dev",
         "brackets/translatable": "@dev",
+        "brackets/media": "@dev",
         "spatie/laravel-permission": "^2.5",
         "spatie/laravel-backup": "^5.0"
     },

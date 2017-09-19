@@ -69,11 +69,10 @@ class SimplewebInstall extends Command
             '--provider' => "Spatie\\Backup\\BackupServiceProvider",
         ]);
 
-//        TODO uncomment this
-//        //Media
-//        $this->call('vendor:publish', [
-//            '--provider' => "Brackets\\Media\\MediaServiceProvider",
-//        ]);
+        //Media
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\Media\\MediaServiceProvider",
+        ]);
 
         //Simpleweb
         $this->call('vendor:publish', [
