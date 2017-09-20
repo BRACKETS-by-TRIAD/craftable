@@ -1,8 +1,8 @@
 {
-    "name": "brackets/simpleweb",
+    "name": "brackets/craftable",
     "description": "Administration toolkit for Laravel 5 - starting point for developing administration interface",
     "keywords": [
-        "simpleweb",
+        "craftable",
         "crud",
         "brackets",
         "admin",
@@ -42,13 +42,13 @@
     "autoload": {
         "classmap": [],
         "psr-4": {
-            "Brackets\\Simpleweb\\": "src/"
+            "Brackets\\Craftable\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Brackets\\Simpleweb\\SimplewebServiceProvider"
+                "Brackets\\Craftable\\CraftableServiceProvider"
             ]
         }
     }

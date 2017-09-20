@@ -1,4 +1,4 @@
-<?php namespace Brackets\Simpleweb\Console\Commands;
+<?php namespace Brackets\Craftable\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -6,21 +6,21 @@ use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
-class SimplewebInstall extends Command
+class CraftableInstall extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'simpleweb:install';
+    protected $signature = 'craftable:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install a SimpleWEB (brackets/simpleweb) instance';
+    protected $description = 'Install a Craftable (brackets/craftable) instance';
 
     /**
      * Execute the console command.
@@ -29,7 +29,7 @@ class SimplewebInstall extends Command
      */
     public function handle(Filesystem $files)
     {
-        $this->info('Crafting SimpleWEB...');
+        $this->info('Crafting Craftable...');
 
         $this->publishAllVendors();
 
@@ -45,7 +45,7 @@ class SimplewebInstall extends Command
 
         $this->call('admin-listing:install');
 
-        $this->info('SimpleWEB crafted :)');
+        $this->info('Craftable crafted :)');
     }
 
     private function strReplaceInFile($fileName, $find, $replaceWith) {
@@ -74,9 +74,9 @@ class SimplewebInstall extends Command
             '--provider' => "Brackets\\Media\\MediaServiceProvider",
         ]);
 
-        //Simpleweb
+        //Craftable
         $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Simpleweb\\SimplewebServiceProvider",
+            '--provider' => "Brackets\\Craftable\\CraftableServiceProvider",
         ]);
     }
 

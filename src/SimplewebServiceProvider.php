@@ -1,9 +1,9 @@
-<?php namespace Brackets\Simpleweb;
+<?php namespace Brackets\Craftable;
 
-use Brackets\Simpleweb\Console\Commands\SimplewebInstall;
+use Brackets\Craftable\Console\Commands\CraftableInstall;
 use Illuminate\Support\ServiceProvider;
 
-class SimplewebServiceProvider extends ServiceProvider
+class CraftableServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -13,7 +13,7 @@ class SimplewebServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands([
-            SimplewebInstall::class,
+            CraftableInstall::class,
         ]);
 
         if ($this->app->runningInConsole()) {

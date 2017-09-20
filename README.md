@@ -1,4 +1,4 @@
-# Simpleweb #
+# Craftable #
 
 ## About ##
 
@@ -7,7 +7,7 @@ It's an administration area. A starting point for developing back-office systems
 - products and orders of your e-shop
 - or customers of your product
 
-![Simpleweb administration area example](https://docs.brackets.sk/assets/movies-crud-1.png "Simpleweb administration area example")
+![Craftable administration area example](https://docs.brackets.sk/assets/movies-crud-1.png "Craftable administration area example")
 
 You could call it CMS, but it's very slim one with as little content to manage as possible. It has:
 - UI - nice admin template based on CoreUI (http://coreui.io/)
@@ -18,7 +18,7 @@ You could call it CMS, but it's very slim one with as little content to manage a
 
 ## Requirements ##
 
-Simpleweb requires:
+Craftable requires:
 - PHP 7.0+
 - MySQL 5.7+ or PostgreSQL 9.5+
 - npm 5.3+
@@ -44,29 +44,29 @@ Before installation, remmeber to create the database and set up the database con
 
 ### We're in BETA ###
 
-Simpleweb is still in BETA. That's why you have to allow not-stable package installation in your project:
+Craftable is still in BETA. That's why you have to allow not-stable package installation in your project:
 ```bash
 composer config "minimum-stability" "beta"
 composer config "prefer-stable" "true"
 ```
 
-### Simpleweb installation ###
+### Craftable installation ###
 
 Now you can require two main packagess:
 
 ```bash
-composer require brackets/simpleweb
+composer require brackets/craftable
 composer require --dev brackets/admin-generator
 ```
 
 Finally, let's install this package using:
 ```bash
-php artisan simpleweb:install
+php artisan craftable:install
 ```
 
 This is going to install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations.
 
-Once SimpleWEB is crafted, don't forget to compile all the assets, so run something like this:
+Once Craftable is crafted, don't forget to compile all the assets, so run something like this:
 ```bash
 npm install
 npm run dev
@@ -84,7 +84,7 @@ After successful auhentication you should be able to see at least:
 
 ## Documentation ##
 
-You can find full documentation of this package and other our packages Simpleweb uses at https://docs.brackets.sk/#/simpleweb.
+You can find full documentation of this package and other our packages Craftable uses at https://docs.brackets.sk/#/craftable.
 
 ## Where to go next? ##
 
