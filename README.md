@@ -7,7 +7,7 @@ It's an administration area. A starting point for developing back-office systems
 - products and orders of your e-shop
 - or customers of your product
 
-![Craftable administration area example](https://docs.brackets.sk/assets/movies-crud-1.png "Craftable administration area example")
+![Craftable administration area example](https://docs.brackets.sk/assets/posts-crud.png "Craftable administration area example")
 
 You could call it CMS, but it's very slim one with as little content to manage as possible. It has:
 - UI - nice admin template based on CoreUI (http://coreui.io/)
