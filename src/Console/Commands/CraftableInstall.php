@@ -29,7 +29,7 @@ class CraftableInstall extends Command
      */
     public function handle(Filesystem $files)
     {
-        $this->info('Crafting Craftable...');
+        $this->info('Crafting Craftable :) ...');
 
         $this->publishAllVendors();
 
