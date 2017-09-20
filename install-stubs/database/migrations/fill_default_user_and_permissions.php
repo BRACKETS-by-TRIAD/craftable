@@ -22,6 +22,7 @@ class FillDefaultUserAndPermissions extends Migration
             // manage translations
             'admin.translation.index',
             'admin.translation.edit',
+            'admin.translation.rescan',
 
             // manage users (access)
             'admin.user.index',
