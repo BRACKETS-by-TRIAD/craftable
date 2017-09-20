@@ -29,7 +29,7 @@ class CraftableInstall extends Command
      */
     public function handle(Filesystem $files)
     {
-        $this->info('Crafting Craftable :) ...');
+        $this->info('Installing Craftable...');
 
         $this->publishAllVendors();
 
@@ -45,7 +45,7 @@ class CraftableInstall extends Command
 
         $this->call('admin-listing:install');
 
-        $this->info('Craftable crafted :)');
+        $this->info('Craftable installed.');
     }
 
     private function strReplaceInFile($fileName, $find, $replaceWith) {
