@@ -19,13 +19,13 @@ You could call it CMS, but it's a very slim one, with as little content to manag
 ### Made of components ###
 
 Our intent was to split all the stuff into several packages with as least dependencies as possible. This is what we're coming with at the moment:
-- [Admin UI](admin-ui#admin-ui) - admin template (CoreUI assets, blades, Vue)
-- [Admin Generator](admin-generator#admin-generator) - CRUD generator for Eloquent models
-- [Admin Authentication](admin-auth#admin-auth) - ability to authenticate into Admin area
-- [Translatable](translatable#translatable) - ability to have translatable content (extending Laravel's default Localization)
-- [Admin Listing](admin-listing#admin-listing) - ability to quickly build a query for administration listing for your Eloquent models
-- [Media Library](media#media) - ability to attach media to eloquent models
-- [Admin Translations](admin-translations#admin-translations) - translation manager (with UI)
+- [Admin UI](https://docs.brackets.sk/#/admin-ui#admin-ui) - admin template (CoreUI assets, blades, Vue)
+- [Admin Generator](https://docs.brackets.sk/#/admin-generator#admin-generator) - CRUD generator for Eloquent models
+- [Admin Authentication](https://docs.brackets.sk/#/admin-auth#admin-auth) - ability to authenticate into Admin area
+- [Translatable](https://docs.brackets.sk/#/translatable#translatable) - ability to have translatable content (extending Laravel's default Localization)
+- [Admin Listing](https://docs.brackets.sk/#/admin-listing#admin-listing) - ability to quickly build a query for administration listing for your Eloquent models
+- [Media Library](https://docs.brackets.sk/#/media#media) - ability to attach media to eloquent models
+- [Admin Translations](https://docs.brackets.sk/#/admin-translations#admin-translations) - translation manager (with UI)
 
 Craftable uses all the packages above. It also uses some other 3rd party packages (like Spatie's `spatie/laravel-permission`) and provides some basic default configuration to speed up a development of a typical administration interface.
 
