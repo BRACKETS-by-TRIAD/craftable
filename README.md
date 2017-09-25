@@ -81,14 +81,14 @@ php artisan craftable:install
 
 This is going to install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations.
 
-Once Craftable is installed, don't forget to compile all the assets, so run something like this ():
+Once Craftable is installed, don't forget to compile all the assets, so run something like this:
 ```bash
 npm install && npm run dev
 ```
 
 ## Basics ##
 
-Once installed, navigate your browser to `/admin/login`. You should be able to see login screen.
+Once installed, navigate your browser to `/admin/login`. You should be able to see a login screen.
 
 ![Admin login form](https://docs.brackets.sk/assets/login-form.png "Admin login form")
 
@@ -96,7 +96,7 @@ Use these credentials to log in:
 - E-mail: `administrator@brackets.sk`
 - Password: `best package ever`
 
-After authorization you should be able to see default homepage and two menu items:
+After authorization you should be able to see a default homepage and two menu items:
 - Manage access
 - Translations
 
