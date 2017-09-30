@@ -45,6 +45,8 @@ It uses Laravel 5.5, so it has to meet also all its requirements https://laravel
 
 ## Installation ##
 
+[![Craftable installation](https://docs.brackets.sk/assets/craftable-installation-youtube.png)](https://www.youtube.com/watch?v=DBCzLR5gpnw)
+
 To start using Craftable you need to proceed two steps:
 1. Adding Craftable
 1. Installation
