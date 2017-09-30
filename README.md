@@ -32,8 +32,12 @@ Craftable uses all the packages above. It also uses some other 3rd party package
 ## Requirements ##
 
 Craftable requires:
-- PHP 7.0+
-- MySQL 5.7+ or PostgreSQL 9.5+
+- PHP:
+  - PHP 7.1+ in development (for [AdminGenerator](https://docs.brackets.sk/#/admin-generator) package to work)
+  - PHP 7.0+ in production
+- Supported databases:
+  - MySQL 5.7+
+  - PostgreSQL 9.5+
 - npm 5.3+
 - node 8.4+
 
