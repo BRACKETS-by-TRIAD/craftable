@@ -71,6 +71,10 @@ class CraftableInstall extends Command
 
         //Media
         $this->call('vendor:publish', [
+            '--provider' => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+            '--tag' => 'migrations'
+        ]);
+        $this->call('vendor:publish', [
             '--provider' => "Brackets\\Media\\MediaServiceProvider",
         ]);
 
