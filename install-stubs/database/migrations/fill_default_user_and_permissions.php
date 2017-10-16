@@ -11,6 +11,7 @@ class FillDefaultUserAndPermissions extends Migration
     protected $users;
     protected $roles;
     protected $permissions;
+    protected $password = 'best package ever';
 
     public function __construct()
     {
@@ -61,7 +62,7 @@ class FillDefaultUserAndPermissions extends Migration
                 'first_name' => 'Administrator',
                 'last_name' => 'Administrator',
                 'email' => 'administrator@brackets.sk',
-                'password' => Hash::make('best package ever'),
+                'password' => Hash::make($this->password),
                 'remember_token' => NULL,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),

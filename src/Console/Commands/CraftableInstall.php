@@ -45,6 +45,8 @@ class CraftableInstall extends Command
 
         $this->call('admin-listing:install');
 
+        $this->generatePasswordAndUpdateMigration();
+
         $this->info('Craftable installed.');
     }
 
@@ -82,6 +84,24 @@ class CraftableInstall extends Command
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Craftable\\CraftableServiceProvider",
         ]);
+    }
+
+    private function generatePasswordAndUpdateMigration()
+    {
+        $password = str_random(10);
+
+        $files = File::allFiles(database_path('migrations'));
+        foreach ($files as $file)
+        {
+            if(strpos($file->getFilename(), 'fill_default_user_and_permissions.php') !== false) {
+                //change database/migrations/*fill_default_user_and_permissions.php to use new password
+                $this->strReplaceInFile(database_path('migrations/'.$file->getFilename()),
+                    "best package ever",
+                    "".$password."");
+                $this->info('Admin password is: ' . $password);
+                break;
+            }
+        }
     }
 
     private function generateUserStuff(Filesystem $files) {
