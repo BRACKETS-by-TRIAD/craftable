@@ -22,7 +22,7 @@ We have created a demo for you to play around at https://demo.brackets.sk.
 
 Use these credentials to sign-in:
 - email: `administrator@brackets.sk`
-- password: `best package ever`
+- password: `demo123`
 
 You can see an administration of:
 - [Posts](https://demo.brackets.sk/admin/posts) - this is the standard CRUD generated with `admin-generator` package
