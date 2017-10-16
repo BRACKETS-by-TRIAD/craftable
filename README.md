@@ -16,6 +16,20 @@ You could call it CMS, but it's a very slim one, with as little content to manag
 - Translations manager
 - other helpers to quickly bootstrap your new administration area (Media Library, Admin Listing, etc.)
 
+### Demo ###
+
+We have created a demo for you to play around at https://demo.brackets.sk.
+
+Use these credentials to sign-in:
+- email: `administrator@brackets.sk`
+- password: `best package ever`
+
+You can see an administration of:
+- [Posts](https://demo.brackets.sk/admin/posts) - this is the standard CRUD generated with `admin-generator` package
+- [Translatable Articles](https://demo.brackets.sk/admin/translatable-articles) - this is the showcase for `translatable`eloquent models
+- [Manage access](https://demo.brackets.sk/admin/users) - is a extended CRUD for the User (your existing eloquent model) management
+- [Translations](https://demo.brackets.sk/admin/translations) - where you can manage the translations stored in the database
+
 ### Made of components ###
 
 Our intent was to split all the stuff into several packages with as least dependencies as possible. This is what we're coming with at the moment:
