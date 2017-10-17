@@ -23,6 +23,13 @@ class CraftableInstall extends Command
     protected $description = 'Install a Craftable (brackets/craftable) instance';
 
     /**
+     * Password for generated default admin
+     *
+     * @var string
+     */
+    protected $password = 'best package ever';
+
+    /**
      * Execute the console command.
      *
      * @return mixed
@@ -32,6 +39,8 @@ class CraftableInstall extends Command
         $this->info('Installing Craftable...');
 
         $this->publishAllVendors();
+
+        $this->generatePasswordAndUpdateMigration();
 
         $this->call('admin-ui:install');
 
@@ -45,7 +54,7 @@ class CraftableInstall extends Command
 
         $this->call('admin-listing:install');
 
-        $this->generatePasswordAndUpdateMigration();
+        $this->comment('Admin password is: ' . $this->password);
 
         $this->info('Craftable installed.');
     }
@@ -88,7 +97,7 @@ class CraftableInstall extends Command
 
     private function generatePasswordAndUpdateMigration()
     {
-        $password = str_random(10);
+        $this->password = str_random(10);
 
         $files = File::allFiles(database_path('migrations'));
         foreach ($files as $file)
@@ -97,8 +106,7 @@ class CraftableInstall extends Command
                 //change database/migrations/*fill_default_user_and_permissions.php to use new password
                 $this->strReplaceInFile(database_path('migrations/'.$file->getFilename()),
                     "best package ever",
-                    "".$password."");
-                $this->info('Admin password is: ' . $password);
+                    "".$this->password."");
                 break;
             }
         }
