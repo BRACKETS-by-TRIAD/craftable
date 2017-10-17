@@ -101,6 +101,8 @@ php artisan craftable:install
 
 This is going to install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations.
 
+Command is going to generate and **print the password for the default administrator** account. Save this password to your clipboard, we are going to need it soon.
+
 Once Craftable is installed, don't forget to compile all the assets, so run something like this:
 ```bash
 npm install && npm run dev
@@ -114,7 +116,7 @@ Once installed, navigate your browser to `/admin/login`. You should be able to s
 
 Use these credentials to log in:
 - E-mail: `administrator@brackets.sk`
-- Password: `best package ever`
+- Password: use password from you clipboard (it was printed in the end of the `craftable:install` command)
 
 After authorization you should be able to see a default homepage and two menu items:
 - Manage access
