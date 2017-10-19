@@ -50,6 +50,9 @@
             "providers": [
                 "Brackets\\Craftable\\CraftableServiceProvider"
             ]
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
         }
     }
 }
