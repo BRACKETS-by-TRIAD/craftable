@@ -38,25 +38,30 @@ class CraftableInstall extends Command
     {
         $this->info('Installing Craftable...');
 
-        $this->publishAllVendors();
+//        $this->getDbSettings();
+//
+//        $this->publishAllVendors();
+//
+//        $this->generatePasswordAndUpdateMigration();
+//
+//        $this->call('admin-ui:install');
+//
+//        $this->call('admin-auth:install');
+//
+//        $this->generateUserStuff($files);
+//
+//        $this->call('admin-translations:install');
+//
+//        $this->scanAndSaveTranslations();
+//
+//        $this->call('admin-listing:install');
 
-        $this->generatePasswordAndUpdateMigration();
-
-        $this->call('admin-ui:install');
-
-        $this->call('admin-auth:install');
-
-        $this->generateUserStuff($files);
-
-        $this->call('admin-translations:install');
-
-        $this->scanAndSaveTranslations();
-
-        $this->call('admin-listing:install');
-
-        $this->comment('Admin password is: ' . $this->password);
-
-        $this->info('Craftable installed.');
+        //TODO run npm install
+        //TODO run npm run dev
+//
+//        $this->comment('Admin password is: ' . $this->password);
+//
+//        $this->info('Craftable installed.');
     }
 
     private function strReplaceInFile($fileName, $find, $replaceWith) {
@@ -151,6 +156,54 @@ class CraftableInstall extends Command
         $this->call('admin-translations:scan-and-save', [
             'paths' => array_merge(config('admin-translations.scanned_directories'), ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
         ]);
+    }
+
+    /*
+     * If default database name in env is present and interaction mode is on,
+     * asks for database settings. Not provided values will not be overwritten.
+     */
+
+    private function getDbSettings()
+    {
+        if(env('DB_DATABASE') == 'homestead' && $this->input->isInteractive()) {
+            $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 1);
+            if(!empty($dbConnection)) {
+                $this->strReplaceInFile(base_path('.env'),
+                    'DB_CONNECTION=mysql',
+                    'DB_CONNECTION='.$dbConnection);
+            }
+            $dbHost = $this->anticipate('What is your database host?', ['localhost', '127.0.0.1']);
+            if(!empty($dbHost)) {
+                $this->strReplaceInFile(base_path('.env'),
+                    'DB_HOST=127.0.0.1',
+                    'DB_HOST='.$dbHost);
+            }
+            $dbPort = $this->anticipate('What is your database port?', ['3306', '5432']);
+            if(!empty($dbPort)) {
+                $this->strReplaceInFile(base_path('.env'),
+                    'DB_PORT=3306',
+                    'DB_PORT='.$dbPort);
+            }
+            $DbDatabase = $this->ask('What is your database name?');
+            if(!empty($DbDatabase)) {
+                $this->strReplaceInFile(base_path('.env'),
+                    'DB_DATABASE=homestead',
+                    'DB_DATABASE='.$DbDatabase);
+            }
+            $dbUsername = $this->ask('What is your database user name?');
+            if(!empty($dbUsername)) {
+                $this->strReplaceInFile(base_path('.env'),
+                    'DB_USERNAME=homestead',
+                    'DB_USERNAME='.$dbUsername);
+            }
+            $dbPassword = $this->secret('What is your database user password?');
+            if(!empty($dbPassword)) {
+                $this->strReplaceInFile(base_path('.env'),
+                    'DB_PASSWORD=secret',
+                    'DB_PASSWORD='.$dbPassword);
+            }
+        }
+
     }
 
 }
