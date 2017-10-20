@@ -56,8 +56,7 @@ class CraftableInstall extends Command
 //
 //        $this->call('admin-listing:install');
 
-        //TODO run npm install
-        //TODO run npm run dev
+        $this->npm();
 //
 //        $this->comment('Admin password is: ' . $this->password);
 //
@@ -162,7 +161,6 @@ class CraftableInstall extends Command
      * If default database name in env is present and interaction mode is on,
      * asks for database settings. Not provided values will not be overwritten.
      */
-
     private function getDbSettings()
     {
         if(env('DB_DATABASE') == 'homestead' && $this->input->isInteractive()) {
@@ -203,7 +201,21 @@ class CraftableInstall extends Command
                     'DB_PASSWORD='.$dbPassword);
             }
         }
+    }
 
+    /*
+     * Run npm commands
+     */
+    private function npm()
+    {
+        $npmInstallFlag = (env('APP_ENV') === 'production') ? '--production' : '';
+        $npmRunFlag = (env('APP_ENV') === 'production') ? 'prod' : 'dev';
+
+        $this->info('Running npm install '.$npmInstallFlag);
+        passthru("npm install {$npmInstallFlag} --no-bin-links");
+
+        $this->info('Running npm run '.$npmRunFlag);
+        passthru("npm run {$npmRunFlag}");
     }
 
 }
