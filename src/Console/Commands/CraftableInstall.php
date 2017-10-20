@@ -38,29 +38,29 @@ class CraftableInstall extends Command
     {
         $this->info('Installing Craftable...');
 
-//        $this->getDbSettings();
-//
-//        $this->publishAllVendors();
-//
-//        $this->generatePasswordAndUpdateMigration();
-//
-//        $this->call('admin-ui:install');
-//
-//        $this->call('admin-auth:install');
-//
-//        $this->generateUserStuff($files);
-//
-//        $this->call('admin-translations:install');
-//
-//        $this->scanAndSaveTranslations();
-//
-//        $this->call('admin-listing:install');
+        $this->getDbSettings();
+
+        $this->publishAllVendors();
+
+        $this->generatePasswordAndUpdateMigration();
+
+        $this->call('admin-ui:install');
+
+        $this->call('admin-auth:install');
+
+        $this->generateUserStuff($files);
+
+        $this->call('admin-translations:install');
+
+        $this->scanAndSaveTranslations();
+
+        $this->call('admin-listing:install');
 
         $this->npm();
-//
-//        $this->comment('Admin password is: ' . $this->password);
-//
-//        $this->info('Craftable installed.');
+
+        $this->comment('Admin password is: ' . $this->password);
+
+        $this->info('Craftable installed.');
     }
 
     private function strReplaceInFile($fileName, $find, $replaceWith) {
@@ -204,18 +204,20 @@ class CraftableInstall extends Command
     }
 
     /*
-     * Run npm commands
+     * Run npm commands if users wishes it.
      */
     private function npm()
     {
-        $npmInstallFlag = (env('APP_ENV') === 'production') ? '--production' : '';
-        $npmRunFlag = (env('APP_ENV') === 'production') ? 'prod' : 'dev';
+        if (!$this->input->isInteractive() || $this->confirm('Do you wish to run npm install and npm run?', true)) {
+            $npmInstallFlag = (env('APP_ENV') === 'production') ? '--production' : '';
+            $npmRunFlag = (env('APP_ENV') === 'production') ? 'prod' : 'dev';
 
-        $this->info('Running npm install '.$npmInstallFlag);
-        passthru("npm install {$npmInstallFlag} --no-bin-links");
+            $this->info('Running npm install '.$npmInstallFlag);
+            passthru("npm install {$npmInstallFlag} --no-bin-links");
 
-        $this->info('Running npm run '.$npmRunFlag);
-        passthru("npm run {$npmRunFlag}");
+            $this->info('Running npm run '.$npmRunFlag);
+            passthru("npm run {$npmRunFlag}");
+        }
     }
 
 }
