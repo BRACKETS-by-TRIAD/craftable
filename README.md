@@ -1,5 +1,16 @@
 # Craftable #
 
+- [About](#about)
+  - [Demo](#demo)
+  - [Packages used](#made-of-components)
+- [Requirements](#requirements)
+  - [New project](#new-craftable-project)
+  - [Add to existing project](#add-craftable-to-existing-project)
+- [Installation](#installation)
+- [Basics](#basics)
+- [Documentation](#documentation)
+- [Where to go next?](#where-to-go-next)
+
 ## About ##
 
 It's an administration area. A starting point for developing back-office system, intranet or a CMS. Where you want to manage something like:
@@ -77,7 +88,7 @@ This is going to install all dependencies, publish all important vendor configs,
 
 Command is going to generate and **print the password for the default administrator** account. Save this password to your clipboard, we are going to need it soon.
 
-### Add Craftable on existing project ###
+### Add Craftable to existing project ###
 
 Or alternatively, you can use your existing Laravel 5.5 application. Start with requiring these two main packages:
 
