@@ -170,31 +170,31 @@ class CraftableInstall extends Command
                     'DB_CONNECTION=mysql',
                     'DB_CONNECTION='.$dbConnection);
             }
-            $dbHost = $this->anticipate('What is your database host?', ['localhost', '127.0.0.1']);
+            $dbHost = $this->anticipate('What is your database host?', ['localhost', '127.0.0.1'], '127.0.0.1');
             if(!empty($dbHost)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_HOST=127.0.0.1',
                     'DB_HOST='.$dbHost);
             }
-            $dbPort = $this->anticipate('What is your database port?', ['3306', '5432']);
+            $dbPort = $this->anticipate('What is your database port?', ['3306', '5432'], env('DB_DATABASE') == 'mysql' ? '3306' : '5432');
             if(!empty($dbPort)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_PORT=3306',
                     'DB_PORT='.$dbPort);
             }
-            $DbDatabase = $this->ask('What is your database name?');
+            $DbDatabase = $this->ask('What is your database name?', 'homestead');
             if(!empty($DbDatabase)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_DATABASE=homestead',
                     'DB_DATABASE='.$DbDatabase);
             }
-            $dbUsername = $this->ask('What is your database user name?');
+            $dbUsername = $this->ask('What is your database user name?', 'homestead');
             if(!empty($dbUsername)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_USERNAME=homestead',
                     'DB_USERNAME='.$dbUsername);
             }
-            $dbPassword = $this->secret('What is your database user password?');
+            $dbPassword = $this->ask('What is your database user password?', 'secret');
             if(!empty($dbPassword)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_PASSWORD=secret',
@@ -208,12 +208,16 @@ class CraftableInstall extends Command
      */
     private function npm()
     {
-        if (!$this->input->isInteractive() || $this->confirm('Do you wish to run npm install and npm run?', true)) {
+        if (!$this->input->isInteractive() || $this->confirm('Do you wish to install npm packages and compile assets?', true)) {
             $npmInstallFlag = (env('APP_ENV') === 'production') ? '--production' : '';
             $npmRunFlag = (env('APP_ENV') === 'production') ? 'prod' : 'dev';
+            $noBinLinks = '';
+            if($this->input->isInteractive() && $this->confirm('Do you need run npm install with --no-bin-links?')) {
+                $noBinLinks = '--no-bin-links';
+            }
 
             $this->info('Running npm install '.$npmInstallFlag);
-            passthru("npm install {$npmInstallFlag} --no-bin-links");
+            passthru("npm install {$npmInstallFlag} {$noBinLinks}");
 
             $this->info('Running npm run '.$npmRunFlag);
             passthru("npm run {$npmRunFlag}");
