@@ -59,26 +59,9 @@ It uses Laravel 5.5, so it has to meet also all its requirements https://laravel
 
 ## Installation ##
 
+### New Craftable project ###
+
 [![Craftable installation](https://docs.brackets.sk/assets/craftable-installation-youtube.png)](https://www.youtube.com/watch?v=DBCzLR5gpnw)
-
-To start using Craftable you need to proceed two steps:
-1. Adding Craftable
-1. Installation
-
-### Adding Craftable ###
-
-You can use your existing Laravel 5.5 application. Or alternatively, you can create new Craftalbe instance (similarily to `laravel new` command.
-
-#### Existing project ####
-
-Start with requiring these two main packagess:
-
-```bash
-composer require brackets/craftable
-composer require --dev brackets/admin-generator
-```
-
-#### New Craftable project ####
 
 If you want to start on fresh Laravel 5.5, you can use our `brackets/craftable-installer` that do all the tricks for you. Let's install it globally:
 ```bash
@@ -90,9 +73,18 @@ Now you can create a new Craftable project:
 craftable new my_project
 ```
 
-### Installation ###
+This is going to install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations.
 
-!>Before installation verify, that you have an existing database and database connection environment is correctly set up. Installation wizard is going to generate some code based on your actual database structure (i.e. users table structure) and migrate database so the database connection is obligatory.
+Command is going to generate and **print the password for the default administrator** account. Save this password to your clipboard, we are going to need it soon.
+
+### Add Craftable on existing project ###
+
+Or alternatively, you can use your existing Laravel 5.5 application. Start with requiring these two main packages:
+
+```bash
+composer require brackets/craftable
+composer require --dev brackets/admin-generator
+```
 
 To install this package use:
 ```bash
@@ -102,11 +94,6 @@ php artisan craftable:install
 This is going to install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations.
 
 Command is going to generate and **print the password for the default administrator** account. Save this password to your clipboard, we are going to need it soon.
-
-Once Craftable is installed, don't forget to compile all the assets, so run something like this:
-```bash
-npm install && npm run dev
-```
 
 ## Basics ##
 
