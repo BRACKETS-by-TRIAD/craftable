@@ -18,7 +18,7 @@ It's an administration area. A starting point for developing back-office system,
 - products and orders of your e-shop
 - or customers of your product
 
-![Craftable administration area example](https://docs.brackets.sk/assets/posts-crud.png "Craftable administration area example")
+![Craftable administration area example](https://docs.getcraftable.com/assets/posts-crud.png "Craftable administration area example")
 
 You could call it CMS, but it's a very slim one, with as little content to manage as possible. It has:
 - UI - nice admin template based on CoreUI (http://coreui.io/)
@@ -44,13 +44,13 @@ You can see an administration of:
 ### Made of components ###
 
 Our intent was to split all the stuff into several packages with as least dependencies as possible. This is what we're coming with at the moment:
-- [Admin UI](https://docs.brackets.sk/#/admin-ui#admin-ui) - admin template (CoreUI assets, blades, Vue)
-- [Admin Generator](https://docs.brackets.sk/#/admin-generator#admin-generator) - CRUD generator for Eloquent models
-- [Admin Authentication](https://docs.brackets.sk/#/admin-auth#admin-auth) - ability to authenticate into Admin area
-- [Translatable](https://docs.brackets.sk/#/translatable#translatable) - ability to have translatable content (extending Laravel's default Localization)
-- [Admin Listing](https://docs.brackets.sk/#/admin-listing#admin-listing) - ability to quickly build a query for administration listing for your Eloquent models
-- [Media Library](https://docs.brackets.sk/#/media#media) - ability to attach media to eloquent models
-- [Admin Translations](https://docs.brackets.sk/#/admin-translations#admin-translations) - translation manager (with UI)
+- [Admin UI](https://docs.getcraftable.com/#/admin-ui#admin-ui) - admin template (CoreUI assets, blades, Vue)
+- [Admin Generator](https://docs.getcraftable.com/#/admin-generator#admin-generator) - CRUD generator for Eloquent models
+- [Admin Authentication](https://docs.getcraftable.com/#/admin-auth#admin-auth) - ability to authenticate into Admin area
+- [Translatable](https://docs.getcraftable.com/#/translatable#translatable) - ability to have translatable content (extending Laravel's default Localization)
+- [Admin Listing](https://docs.getcraftable.com/#/admin-listing#admin-listing) - ability to quickly build a query for administration listing for your Eloquent models
+- [Media Library](https://docs.getcraftable.com/#/media#media) - ability to attach media to eloquent models
+- [Admin Translations](https://docs.getcraftable.com/#/admin-translations#admin-translations) - translation manager (with UI)
 
 Craftable uses all the packages above. It also uses some other 3rd party packages (like Spatie's `spatie/laravel-permission`) and provides some basic default configuration to speed up a development of a typical administration interface.
 
@@ -58,7 +58,7 @@ Craftable uses all the packages above. It also uses some other 3rd party package
 
 Craftable requires:
 - PHP:
-  - PHP 7.1+ in development (for [AdminGenerator](https://docs.brackets.sk/#/admin-generator) package to work)
+  - PHP 7.1+ in development (for [AdminGenerator](https://docs.getcraftable.com/#/admin-generator) package to work)
   - PHP 7.0+ in production
 - Supported databases:
   - MySQL 5.7+
@@ -72,7 +72,7 @@ It uses Laravel 5.5, so it has to meet also all its requirements https://laravel
 
 ### New Craftable project ###
 
-[![Craftable installation](https://docs.brackets.sk/assets/craftable-installation-youtube.png)](https://www.youtube.com/watch?v=DBCzLR5gpnw)
+[![Craftable installation](https://docs.getcraftable.com/assets/craftable-installation-youtube.png)](https://www.youtube.com/watch?v=DBCzLR5gpnw)
 
 If you want to start on fresh Laravel 5.5, you can use our `brackets/craftable-installer` that do all the tricks for you. Let's install it globally:
 ```bash
@@ -110,7 +110,7 @@ Command is going to generate and **print the password for the default administra
 
 Once installed, navigate your browser to `/admin/login`. You should be able to see a login screen.
 
-![Admin login form](https://docs.brackets.sk/assets/login-form.png "Admin login form")
+![Admin login form](https://docs.getcraftable.com/assets/login-form.png "Admin login form")
 
 Use these credentials to log in:
 - E-mail: `administrator@brackets.sk`
@@ -120,11 +120,11 @@ After authorization you should be able to see a default homepage and two menu it
 - Manage access
 - Translations
 
-![Admin homepage](https://docs.brackets.sk/assets/admin-home.png "Admin homepage")
+![Admin homepage](https://docs.getcraftable.com/assets/admin-home.png "Admin homepage")
 
 ## Documentation ##
 
-You can find full documentation of this package and other our packages Craftable uses at https://docs.brackets.sk/#/craftable.
+You can find full documentation of this package and other our packages Craftable uses at https://docs.getcraftable.com/#/craftable.
 
 ## Where to go next? ##
 
