@@ -29,17 +29,17 @@ You could call it CMS, but it's a very slim one, with as little content to manag
 
 ### Demo ###
 
-We have created a demo for you to play around at https://demo.brackets.sk.
+We have created a demo for you to play around at https://demo.getcraftable.com.
 
 Use these credentials to sign-in:
-- email: `administrator@brackets.sk`
+- email: `demo@getcraftable.com`
 - password: `demo123`
 
 You can see an administration of:
-- [Posts](https://demo.brackets.sk/admin/posts) - this is the standard CRUD generated with `admin-generator` package
-- [Translatable Articles](https://demo.brackets.sk/admin/translatable-articles) - this is the showcase for `translatable`eloquent models
-- [Manage access](https://demo.brackets.sk/admin/users) - is a extended CRUD for the User (your existing eloquent model) management
-- [Translations](https://demo.brackets.sk/admin/translations) - where you can manage the translations stored in the database
+- [Posts](https://demo.getcraftable.com/admin/posts) - this is the standard CRUD generated with `admin-generator` package
+- [Translatable Articles](https://demo.getcraftable.com/admin/translatable-articles) - this is the showcase for `translatable`eloquent models
+- [Manage access](https://demo.getcraftable.com/admin/users) - is a extended CRUD for the User (your existing eloquent model) management
+- [Translations](https://demo.getcraftable.com/admin/translations) - where you can manage the translations stored in the database
 
 ### Made of components ###
 
@@ -57,9 +57,7 @@ Craftable uses all the packages above. It also uses some other 3rd party package
 ## Requirements ##
 
 Craftable requires:
-- PHP:
-  - PHP 7.1+ in development (for [AdminGenerator](https://docs.getcraftable.com/#/admin-generator) package to work)
-  - PHP 7.0+ in production
+- PHP 7.1+
 - Supported databases:
   - MySQL 5.7+
   - PostgreSQL 9.5+
@@ -71,8 +69,6 @@ It uses Laravel 5.5, so it has to meet also all its requirements https://laravel
 ## Installation ##
 
 ### New Craftable project ###
-
-[![Craftable installation](https://docs.getcraftable.com/assets/craftable-installation-youtube.png)](https://www.youtube.com/watch?v=DBCzLR5gpnw)
 
 If you want to start on fresh Laravel 5.5, you can use our `brackets/craftable-installer` that do all the tricks for you. Let's install it globally:
 ```bash
