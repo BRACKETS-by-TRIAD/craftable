@@ -38,8 +38,6 @@ class CraftableInstall extends Command
     {
         $this->info('Installing Craftable...');
 
-        $this->getDbSettings();
-
         $this->publishAllVendors();
 
         $this->generatePasswordAndUpdateMigration();
@@ -55,8 +53,6 @@ class CraftableInstall extends Command
         $this->scanAndSaveTranslations();
 
         $this->call('admin-listing:install');
-
-        $this->npm();
 
         $this->comment('Admin password is: ' . $this->password);
 
@@ -155,73 +151,6 @@ class CraftableInstall extends Command
         $this->call('admin-translations:scan-and-save', [
             'paths' => array_merge(config('admin-translations.scanned_directories'), ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
         ]);
-    }
-
-    /*
-     * If default database name in env is present and interaction mode is on,
-     * asks for database settings. Not provided values will not be overwritten.
-     */
-    private function getDbSettings()
-    {
-        if(env('DB_DATABASE') == 'homestead' && $this->input->isInteractive()) {
-            $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 1);
-            if(!empty($dbConnection)) {
-                $this->strReplaceInFile(base_path('.env'),
-                    'DB_CONNECTION=mysql',
-                    'DB_CONNECTION='.$dbConnection);
-            }
-            $dbHost = $this->anticipate('What is your database host?', ['localhost', '127.0.0.1'], '127.0.0.1');
-            if(!empty($dbHost)) {
-                $this->strReplaceInFile(base_path('.env'),
-                    'DB_HOST=127.0.0.1',
-                    'DB_HOST='.$dbHost);
-            }
-            $dbPort = $this->anticipate('What is your database port?', ['3306', '5432'], env('DB_DATABASE') == 'mysql' ? '3306' : '5432');
-            if(!empty($dbPort)) {
-                $this->strReplaceInFile(base_path('.env'),
-                    'DB_PORT=3306',
-                    'DB_PORT='.$dbPort);
-            }
-            $DbDatabase = $this->ask('What is your database name?', 'homestead');
-            if(!empty($DbDatabase)) {
-                $this->strReplaceInFile(base_path('.env'),
-                    'DB_DATABASE=homestead',
-                    'DB_DATABASE='.$DbDatabase);
-            }
-            $dbUsername = $this->ask('What is your database user name?', 'homestead');
-            if(!empty($dbUsername)) {
-                $this->strReplaceInFile(base_path('.env'),
-                    'DB_USERNAME=homestead',
-                    'DB_USERNAME='.$dbUsername);
-            }
-            $dbPassword = $this->ask('What is your database user password?', 'secret');
-            if(!empty($dbPassword)) {
-                $this->strReplaceInFile(base_path('.env'),
-                    'DB_PASSWORD=secret',
-                    'DB_PASSWORD='.$dbPassword);
-            }
-        }
-    }
-
-    /*
-     * Run npm commands if users wishes it.
-     */
-    private function npm()
-    {
-        if (!$this->input->isInteractive() || $this->confirm('Do you wish to install npm packages and compile assets?', true)) {
-            $npmInstallFlag = (env('APP_ENV') === 'production') ? '--production' : '';
-            $npmRunFlag = (env('APP_ENV') === 'production') ? 'prod' : 'dev';
-            $noBinLinks = '';
-            if($this->input->isInteractive() && $this->confirm('Do you need run npm install with --no-bin-links?')) {
-                $noBinLinks = '--no-bin-links';
-            }
-
-            $this->info('Running npm install '.$npmInstallFlag);
-            passthru("npm install {$npmInstallFlag} {$noBinLinks}");
-
-            $this->info('Running npm run '.$npmRunFlag);
-            passthru("npm run {$npmRunFlag}");
-        }
     }
 
 }
