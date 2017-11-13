@@ -6,21 +6,21 @@ use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
-class CraftableInitializeDatabase extends Command
+class CraftableInitializeEnv extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'craftable:initDb';
+    protected $signature = 'craftable:init-env';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Initialize .env database settings';
+    protected $description = 'Initialize database environment variables';
 
 
     /**
@@ -30,11 +30,11 @@ class CraftableInitializeDatabase extends Command
      */
     public function handle(Filesystem $files)
     {
-        $this->info('Initializing Database...');
+        $this->info('Initializing database environment variables...');
 
         $this->getDbSettings();
 
-        $this->info('Database settings initialized.');
+        $this->info('Database environment variables initialized.');
     }
 
     private function strReplaceInFile($fileName, $find, $replaceWith) {
