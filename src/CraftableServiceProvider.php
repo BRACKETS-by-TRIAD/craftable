@@ -1,5 +1,6 @@
 <?php namespace Brackets\Craftable;
 
+use Brackets\Craftable\Console\Commands\CraftableInitializeEnv;
 use Brackets\Craftable\Console\Commands\CraftableInstall;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,6 +14,7 @@ class CraftableServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands([
+            CraftableInitializeEnv::class,
             CraftableInstall::class,
         ]);
 
