@@ -35,6 +35,8 @@ class CraftableInitializeEnv extends Command
         $this->getDbSettings();
 
         $this->info('Database environment variables initialized.');
+
+        $this->setApplicationName();
     }
 
     private function strReplaceInFile($fileName, $find, $replaceWith) {
@@ -85,6 +87,21 @@ class CraftableInitializeEnv extends Command
                     'DB_PASSWORD=secret',
                     'DB_PASSWORD='.$dbPassword);
             }
+        }
+    }
+
+    /*
+     * Change default application name from Laravel to Craftable
+     */
+    private function setApplicationName()
+    {
+        if(env('APP_NAME') == 'Laravel') {
+            $this->strReplaceInFile(base_path('.env'),
+                'APP_NAME=Laravel',
+                'APP_NAME=Craftable');
+            $this->strReplaceInFile(base_path('.env.example'),
+                'APP_NAME=Laravel',
+                'APP_NAME=Craftable');
         }
     }
 }
