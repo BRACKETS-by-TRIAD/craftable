@@ -54,6 +54,8 @@ class CraftableInstall extends Command
 
         $this->call('admin-listing:install');
 
+        $this->runNpmCommands();
+
         $this->comment('Admin password is: ' . $this->password);
 
         $this->info('Craftable installed.');
@@ -153,4 +155,22 @@ class CraftableInstall extends Command
         ]);
     }
 
+    private function runNpmCommands()
+    {
+        // Run NPM Install
+        $this->info('Running npm install...');
+        $process = (new \Symfony\Component\Process\Process('npm install'))->setTimeout(300);
+        $process->run();
+        if (!$process->isSuccessful()) {
+            throw new \Symfony\Component\Process\Exception\ProcessFailedException($process);
+        }
+
+        // Run NPM Run Dev
+        $this->info('Running npm run dev...');
+        $process = (new \Symfony\Component\Process\Process('npm run dev'))->setTimeout(300);
+        $process->run();
+        if (!$process->isSuccessful()) {
+            throw new \Symfony\Component\Process\Exception\ProcessFailedException($process);
+        }
+    }
 }
