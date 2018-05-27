@@ -30,12 +30,12 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "brackets/admin-ui": "^2.0",
-        "brackets/admin-listing": "^2.0",
-        "brackets/admin-auth": "^2.0",
-        "brackets/admin-translations": "^2.0",
-        "brackets/translatable": "^1.0",
-        "brackets/media": "^1.0",
+        "brackets/admin-ui": "dev-laravel-56 as 2.0.x-dev",
+        "brackets/admin-listing": "dev-laravel-56 as 2.0.x-dev",
+        "brackets/admin-auth": "dev-laravel-56 as 2.0.x-dev",
+        "brackets/admin-translations": "dev-laravel-56 as 2.0.x-dev",
+        "brackets/translatable": "dev-laravel-56 as 1.0.x-dev",
+        "brackets/media": "dev-laravel-56 as 1.0.x-dev",
         "spatie/laravel-permission": "^2.5",
         "spatie/laravel-backup": "^5.0"
     },
