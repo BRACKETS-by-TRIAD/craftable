@@ -131,4 +131,4 @@ In case you rather want to create some atypical custom made administration, then
 Have fun & craft something awesome!
 
 ## Licence
-MIT Licence. Refer to the [LICENSE](https://github.com/rairlie/laravel-locking-session/blob/master/LICENSE.txt) file to get more info.
+MIT Licence. Refer to the [LICENSE](https://github.com/BRACKETS-by-TRIAD/craftable/blob/master/LICENSE.md) file to get more info.
