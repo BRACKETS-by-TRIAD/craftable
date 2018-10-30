@@ -13,10 +13,7 @@
 
 ## About ##
 
-It's an administration area. A starting point for developing back-office system, intranet or a CMS. Where you want to manage something like:
-- content of your web portal
-- products and orders of your e-shop
-- or customers of your product
+Hi Crafter, welcome to the official documentation for Craftable v2 (v1 docs can be found here) - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
 
 ![Craftable administration area example](https://docs.getcraftable.com/assets/posts-crud.png "Craftable administration area example")
 
@@ -64,23 +61,31 @@ Craftable requires:
 - npm 5.3+
 - node 8.4+
 
-It uses Laravel 5.5, so it has to meet also all its requirements https://laravel.com/docs/5.5/installation#server-requirements.
+It uses latest Laravel (currently 5.6) or latest LTS (long-term support) Laravel (currently 5.5), so it has to meet also all theirs requirements https://laravel.com/docs/5.6/installation#server-requirements. https://laravel.com/docs/5.5/installation#server-requirements
 
 ## Installation ##
 
 ### New Craftable project ###
 
-If you want to start on fresh Laravel 5.5, you can use our `brackets/craftable-installer` that do all the tricks for you. Let's install it globally:
+If you want to start on fresh Laravel, you can use our `brackets/craftable-installer` that do all the tricks for you. Let's install it globally:
 ```bash
 composer global require "brackets/craftable-installer"
 ```
+
+Create an empty database of your choice (PostgreSQL or MySQL).
 
 Now you can create a new Craftable project:
 ```bash
 craftable new my_project
 ```
 
-This is going to install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations.
+This will install Craftable using latest Laravel version. If you prefer tu use latest LTS Laravel version, use `--lts` flag:
+```bash
+craftable new --lts my_project
+```
+
+The commands is going to ask for a database settings and then it will setup everything (install all dependencies, publish all important vendor configs, migrate, setup some configs, webpack config and run migrations).
+
 
 Command is going to generate and **print the password for the default administrator** account. Save this password to your clipboard, we are going to need it soon.
 
