@@ -61,7 +61,7 @@ Craftable requires:
 - npm 5.3+
 - node 8.4+
 
-Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 5.5 and 5.6
+Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 5.5 and 5.6:
 - https://laravel.com/docs/5.5/installation#server-requirements
 - https://laravel.com/docs/5.6/installation#server-requirements
 
