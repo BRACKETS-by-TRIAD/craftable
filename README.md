@@ -81,7 +81,7 @@ Now you can create a new Craftable project:
 craftable new my_project
 ```
 
-This will install Craftable using latest Laravel version (currently 5.7). If you prefer tu use latest LTS Laravel version (currently 5.5), use `--lts` flag:
+This will install Craftable using latest supported Laravel version (currently 5.6). If you prefer tu use latest LTS Laravel version (currently 5.5), use `--lts` flag:
 ```bash
 craftable new --lts my_project
 ```
