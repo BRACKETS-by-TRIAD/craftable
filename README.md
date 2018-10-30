@@ -61,9 +61,10 @@ Craftable requires:
 - npm 5.3+
 - node 8.4+
 
-Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 5.5 and 5.6:
+Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 5.5, 5.6 and 5.7:
 - https://laravel.com/docs/5.5/installation#server-requirements
 - https://laravel.com/docs/5.6/installation#server-requirements
+- https://laravel.com/docs/5.7/installation#server-requirements
 
 ## Installation ##
 
@@ -81,7 +82,7 @@ Now you can create a new Craftable project:
 craftable new my_project
 ```
 
-This will install Craftable using latest supported Laravel version (currently 5.6). If you prefer tu use latest LTS Laravel version (currently 5.5), use `--lts` flag:
+This will install Craftable using latest Laravel version (currently 5.7). If you prefer tu use latest LTS Laravel version (currently 5.5), use `--lts` flag:
 ```bash
 craftable new --lts my_project
 ```
