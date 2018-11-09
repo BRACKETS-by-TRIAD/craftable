@@ -3,10 +3,7 @@
 namespace Brackets\Craftable\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
 
 class CraftableInitializeEnv extends Command
 {
@@ -29,7 +26,7 @@ class CraftableInitializeEnv extends Command
      *
      * @return mixed
      */
-    public function handle(Filesystem $files)
+    public function handle()
     {
         $this->info('Initializing database environment variables...');
 
@@ -43,9 +40,13 @@ class CraftableInitializeEnv extends Command
     /**
      * Replace string in file
      *
+     * @param string $fileName
+     * @param string $find
+     * @param string $replaceWith
      * @return int|bool
      */
-    private function strReplaceInFile($fileName, $find, $replaceWith) {
+    private function strReplaceInFile($fileName, $find, $replaceWith)
+    {
         $content = File::get($fileName);
         return File::put($fileName, str_replace($find, $replaceWith, $content));
     }
@@ -58,42 +59,43 @@ class CraftableInitializeEnv extends Command
      */
     private function getDbSettings()
     {
-        if(env('DB_DATABASE') == 'homestead' && $this->input->isInteractive()) {
+        if (env('DB_DATABASE') == 'homestead' && $this->input->isInteractive()) {
             $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 1);
-            if(!empty($dbConnection)) {
+            if (!empty($dbConnection)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_CONNECTION=mysql',
-                    'DB_CONNECTION='.$dbConnection);
+                    'DB_CONNECTION=' . $dbConnection);
             }
             $dbHost = $this->anticipate('What is your database host?', ['localhost', '127.0.0.1'], '127.0.0.1');
-            if(!empty($dbHost)) {
+            if (!empty($dbHost)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_HOST=127.0.0.1',
-                    'DB_HOST='.$dbHost);
+                    'DB_HOST=' . $dbHost);
             }
-            $dbPort = $this->anticipate('What is your database port?', ['3306', '5432'], env('DB_DATABASE') == 'mysql' ? '3306' : '5432');
-            if(!empty($dbPort)) {
+            $dbPort = $this->anticipate('What is your database port?', ['3306', '5432'],
+                env('DB_DATABASE') == 'mysql' ? '3306' : '5432');
+            if (!empty($dbPort)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_PORT=3306',
-                    'DB_PORT='.$dbPort);
+                    'DB_PORT=' . $dbPort);
             }
             $DbDatabase = $this->ask('What is your database name?', 'homestead');
-            if(!empty($DbDatabase)) {
+            if (!empty($DbDatabase)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_DATABASE=homestead',
-                    'DB_DATABASE='.$DbDatabase);
+                    'DB_DATABASE=' . $DbDatabase);
             }
             $dbUsername = $this->ask('What is your database user name?', 'homestead');
-            if(!empty($dbUsername)) {
+            if (!empty($dbUsername)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_USERNAME=homestead',
-                    'DB_USERNAME='.$dbUsername);
+                    'DB_USERNAME=' . $dbUsername);
             }
             $dbPassword = $this->ask('What is your database user password?', 'secret');
-            if(!empty($dbPassword)) {
+            if (!empty($dbPassword)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_PASSWORD=secret',
-                    'DB_PASSWORD='.$dbPassword);
+                    'DB_PASSWORD=' . $dbPassword);
             }
         }
     }
@@ -105,7 +107,7 @@ class CraftableInitializeEnv extends Command
      */
     private function setApplicationName()
     {
-        if(env('APP_NAME') == 'Laravel') {
+        if (env('APP_NAME') == 'Laravel') {
             $this->strReplaceInFile(base_path('.env'),
                 'APP_NAME=Laravel',
                 'APP_NAME=Craftable');

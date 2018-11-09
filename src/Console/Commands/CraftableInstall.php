@@ -32,6 +32,7 @@ class CraftableInstall extends Command
     /**
      * Execute the console command.
      *
+     * @param Filesystem $files
      * @return mixed
      */
     public function handle(Filesystem $files)
@@ -62,6 +63,9 @@ class CraftableInstall extends Command
     /**
      * Replace string in file
      *
+     * @param string $fileName
+     * @param string $find
+     * @param string $replaceWith
      * @return int|bool
      */
     private function strReplaceInFile($fileName, $find, $replaceWith)
@@ -131,10 +135,13 @@ class CraftableInstall extends Command
     /**
      * Generate user administration and profile
      *
+     * @param Filesystem $files
      * @return void
      */
     private function generateUserStuff(Filesystem $files)
     {
+        //TODO refactor this to generate adin user and profile or remove completly if this is moved to admin-auth
+
         // TODO this is probably redundant?
         // Migrate
         $this->call('migrate');
