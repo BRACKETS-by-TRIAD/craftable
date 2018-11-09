@@ -1,4 +1,6 @@
-<?php namespace Brackets\Craftable;
+<?php
+
+namespace Brackets\Craftable;
 
 use Brackets\Craftable\Console\Commands\CraftableInitializeEnv;
 use Brackets\Craftable\Console\Commands\CraftableInstall;
@@ -19,11 +21,11 @@ class CraftableServiceProvider extends ServiceProvider
         ]);
 
         if ($this->app->runningInConsole()) {
-            if (! class_exists('FillDefaultUserAndPermissions')) {
+            if (!class_exists('FillDefaultAdminUserAndPermissions')) {
                 $timestamp = date('Y_m_d_His', time() + 5);
 
                 $this->publishes([
-                    __DIR__.'/../install-stubs/database/migrations/fill_default_user_and_permissions.php' => database_path('migrations').'/'.$timestamp.'_fill_default_user_and_permissions.php',
+                    __DIR__ . '/../install-stubs/database/migrations/fill_default_admin_user_and_permissions.php' => database_path('migrations') . '/' . $timestamp . '_fill_default_admin_user_and_permissions.php',
                 ], 'migrations');
             }
         }

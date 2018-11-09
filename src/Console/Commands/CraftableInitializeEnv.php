@@ -1,4 +1,6 @@
-<?php namespace Brackets\Craftable\Console\Commands;
+<?php
+
+namespace Brackets\Craftable\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -22,7 +24,6 @@ class CraftableInitializeEnv extends Command
      */
     protected $description = 'Initialize database environment variables';
 
-
     /**
      * Execute the console command.
      *
@@ -39,14 +40,21 @@ class CraftableInitializeEnv extends Command
         $this->setApplicationName();
     }
 
+    /**
+     * Replace string in file
+     *
+     * @return int|bool
+     */
     private function strReplaceInFile($fileName, $find, $replaceWith) {
         $content = File::get($fileName);
         return File::put($fileName, str_replace($find, $replaceWith, $content));
     }
 
-    /*
+    /**
      * If default database name in env is present and interaction mode is on,
      * asks for database settings. Not provided values will not be overwritten.
+     *
+     * @return void
      */
     private function getDbSettings()
     {
@@ -90,8 +98,10 @@ class CraftableInitializeEnv extends Command
         }
     }
 
-    /*
+    /**
      * Change default application name from Laravel to Craftable
+     *
+     * @return void
      */
     private function setApplicationName()
     {

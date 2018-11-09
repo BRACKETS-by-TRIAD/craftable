@@ -1,10 +1,10 @@
-<?php namespace Brackets\Craftable\Console\Commands;
+<?php
+
+namespace Brackets\Craftable\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
 
 class CraftableInstall extends Command
 {
@@ -59,12 +59,24 @@ class CraftableInstall extends Command
         $this->info('Craftable installed.');
     }
 
-    private function strReplaceInFile($fileName, $find, $replaceWith) {
+    /**
+     * Replace string in file
+     *
+     * @return int|bool
+     */
+    private function strReplaceInFile($fileName, $find, $replaceWith)
+    {
         $content = File::get($fileName);
         return File::put($fileName, str_replace($find, $replaceWith, $content));
     }
 
-    private function publishAllVendors() {
+    /**
+     * Publishing all publishable files from all craftable packages
+     *
+     * @return void
+     */
+    private function publishAllVendors()
+    {
         //Spatie Permission
         $this->call('vendor:publish', [
             '--provider' => 'Spatie\\Permission\\PermissionServiceProvider',
@@ -95,24 +107,34 @@ class CraftableInstall extends Command
         ]);
     }
 
+    /**
+     * Generate new password and change default password in igration to use new password
+     *
+     * @return void
+     */
     private function generatePasswordAndUpdateMigration()
     {
         $this->password = str_random(10);
 
         $files = File::allFiles(database_path('migrations'));
-        foreach ($files as $file)
-        {
-            if(strpos($file->getFilename(), 'fill_default_user_and_permissions.php') !== false) {
+        foreach ($files as $file) {
+            if (strpos($file->getFilename(), 'fill_default_admin_user_and_permissions.php') !== false) {
                 //change database/migrations/*fill_default_user_and_permissions.php to use new password
-                $this->strReplaceInFile(database_path('migrations/'.$file->getFilename()),
+                $this->strReplaceInFile(database_path('migrations/' . $file->getFilename()),
                     "best package ever",
-                    "".$this->password."");
+                    "" . $this->password . "");
                 break;
             }
         }
     }
 
-    private function generateUserStuff(Filesystem $files) {
+    /**
+     * Generate user administration and profile
+     *
+     * @return void
+     */
+    private function generateUserStuff(Filesystem $files)
+    {
         // TODO this is probably redundant?
         // Migrate
         $this->call('migrate');
@@ -136,8 +158,13 @@ class CraftableInstall extends Command
         $this->call('admin:generate:user:profile');
     }
 
-    // TODO should it still be here?
-    private function scanAndSaveTranslations() {
+    /**
+     * Prepare translations config and rescan
+     *
+     * @return void
+     */
+    private function scanAndSaveTranslations()
+    {
         // Scan translations
         $this->info('Scanning codebase and storing all translations');
 
@@ -149,7 +176,8 @@ class CraftableInstall extends Command
         base_path(\'vendor/brackets/admin-auth/resources\'),');
 
         $this->call('admin-translations:scan-and-save', [
-            'paths' => array_merge(config('admin-translations.scanned_directories'), ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
+            'paths' => array_merge(config('admin-translations.scanned_directories'),
+                ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
         ]);
     }
 
