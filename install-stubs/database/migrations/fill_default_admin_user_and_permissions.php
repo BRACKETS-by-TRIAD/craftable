@@ -45,7 +45,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
      */
     public function __construct()
     {
-        $this->guardName = config('admin-auth.guard');
+        $this->guardName = config('admin-auth.defaults.guard');
         $providerName = config('auth.guards.' . $this->guardName . '.provider');
         $provider = config('auth.providers.' . $providerName);
         if ($provider['driver'] === 'eloquent') {
@@ -63,10 +63,10 @@ class FillDefaultAdminUserAndPermissions extends Migration
             'admin.translation.rescan',
 
             // manage users (access)
-            'admin.user.index',
-            'admin.user.create',
-            'admin.user.edit',
-            'admin.user.delete',
+            'admin.admin-user.index',
+            'admin.admin-user.create',
+            'admin.admin-user.edit',
+            'admin.admin-user.delete',
 
             // ability to upload
             'admin.upload',

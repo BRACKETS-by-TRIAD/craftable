@@ -153,13 +153,13 @@ class CraftableInstall extends Command
             '--force' => true,
         ]);
 
-        //change config/auth.php to use App/Models/User::class
-        $this->strReplaceInFile(config_path('auth.php'),
-            "App\\User::class",
-            "App\\Models\\User::class");
-
-        // Remove User from App/User
-        $files->delete(app_path('User.php'));
+//        //change config/auth.php to use App/Models/User::class
+//        $this->strReplaceInFile(config_path('auth.php'),
+//            "App\\User::class",
+//            "App\\Models\\User::class");
+//
+//        // Remove User from App/User
+//        $files->delete(app_path('User.php'));
 
         // Generate user profile
         $this->call('admin:generate:user:profile');
