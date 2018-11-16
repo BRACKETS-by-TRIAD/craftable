@@ -37,7 +37,8 @@
         "brackets/translatable": "^1.0",
         "brackets/media": "^1.0",
         "spatie/laravel-permission": "^2.5",
-        "spatie/laravel-backup": "^5.0"
+        "spatie/laravel-backup": "^5.0",
+        "maatwebsite/excel": "^3.1"
     },
     "autoload": {
         "classmap": [],
