@@ -137,3 +137,6 @@ At this point you are ready to start building your administration area. You prob
 In case you rather want to create some atypical custom made administration, then you probably want to head over to [Admin UI](admin-ui) package.
 
 Have fun & craft something awesome!
+
+## Licence
+MIT Licence. Refer to the [LICENSE](https://github.com/BRACKETS-by-TRIAD/craftable/blob/master/LICENSE) file to get more info.
