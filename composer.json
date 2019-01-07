@@ -29,10 +29,10 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
-        "brackets/admin-ui": "^2.0",
+        "php": ">=7.1.0",
+        "brackets/admin-ui": "^3.0",
         "brackets/admin-listing": "^2.0",
-        "brackets/admin-auth": "^2.0",
+        "brackets/admin-auth": "^3.0",
         "brackets/admin-translations": "^2.0",
         "brackets/translatable": "^1.0",
         "brackets/media": "^1.0",
