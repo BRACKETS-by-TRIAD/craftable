@@ -140,29 +140,17 @@ class CraftableInstall extends Command
      */
     private function generateUserStuff(Filesystem $files)
     {
-        //TODO refactor this to generate adin user and profile or remove completly if this is moved to admin-auth
-
         // TODO this is probably redundant?
         // Migrate
         $this->call('migrate');
 
         // Generate User CRUD (with new model)
-        $this->call('admin:generate:user', [
-            '--model-name' => "App\\Models\\User",
-            '--generate-model' => true,
+        $this->call('admin:generate:admin-user', [
             '--force' => true,
         ]);
 
-//        //change config/auth.php to use App/Models/User::class
-//        $this->strReplaceInFile(config_path('auth.php'),
-//            "App\\User::class",
-//            "App\\Models\\User::class");
-//
-//        // Remove User from App/User
-//        $files->delete(app_path('User.php'));
-
         // Generate user profile
-        $this->call('admin:generate:user:profile');
+        $this->call('admin:generate:admin-user:profile');
     }
 
     /**
