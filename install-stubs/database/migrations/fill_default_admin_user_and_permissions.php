@@ -128,7 +128,6 @@ class FillDefaultAdminUserAndPermissions extends Migration
         if (is_null($this->userClassName)) {
             throw new Exception('Admin user model not defined');
         }
-        app()['cache']->forget('spatie.permission.cache');
         DB::transaction(function () {
             foreach ($this->permissions as $permission) {
                 $permissionItem = DB::table('permissions')->where([
@@ -219,6 +218,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
 
             }
         });
+        app()['cache']->forget(config('permission.cache.key'));
     }
 
     /**
@@ -232,7 +232,6 @@ class FillDefaultAdminUserAndPermissions extends Migration
         if (is_null($this->userClassName)) {
             throw new Exception('Admin user model not defined');
         }
-        app()['cache']->forget('spatie.permission.cache');
         DB::transaction(function () {
             foreach ($this->users as $user) {
                 $userItem = DB::table($this->userTable)->where('email', $user['email'])->first();
@@ -271,5 +270,6 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 }
             }
         });
+        app()['cache']->forget(config('permission.cache.key'));
     }
 }
