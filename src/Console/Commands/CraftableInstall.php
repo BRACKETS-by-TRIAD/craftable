@@ -43,6 +43,8 @@ class CraftableInstall extends Command
 
         $this->generatePasswordAndUpdateMigration();
 
+        $this->addHashToLogging();
+
         $this->call('admin-ui:install');
 
         $this->call('admin-auth:install');
@@ -103,6 +105,11 @@ class CraftableInstall extends Command
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Media\\MediaServiceProvider",
+        ]);
+
+        //Advanced logger
+        $this->call('vendor:publish', [
+            '--provider' => "Brackets\\AdvancedLogger\\AdvancedLoggerServiceProvider",
         ]);
 
         //Craftable
@@ -174,6 +181,21 @@ class CraftableInstall extends Command
             'paths' => array_merge(config('admin-translations.scanned_directories'),
                 ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
         ]);
+    }
+
+    /**
+     * Change logging to add hash to logs
+     *
+     * @return void
+     */
+    private function addHashToLogging(): void
+    {
+        if (version_compare(app()->version(), '5.6.0', '>=')) {
+            $this->strReplaceInFile(config_path('logging.php'),
+                '\'days\' => 14,',
+                '\'days\' => 90,
+            \'tap\' => [Brackets\AdvancedLogger\LogCustomizers\HashLogCustomizer::class],');
+        }
     }
 
 }
