@@ -13,7 +13,7 @@
 
 ## About ##
 
-Hi Crafter, welcome to the official documentation for Craftable v2 (v1 docs can be found here) - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
+Hi Crafter, welcome to the official documentation for Craftable v3 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
 
 ![Craftable administration area example](https://docs.getcraftable.com/assets/posts-crud.png "Craftable administration area example")
 
