@@ -54,7 +54,7 @@
             ]
         },
         "branch-alias": {
-            "dev-master": "3.0-add-avatar-in-migration"
+            "dev-add-avatar-in-migration": "3.0-dev"
         }
     }
 }
