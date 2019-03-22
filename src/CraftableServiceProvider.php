@@ -28,6 +28,12 @@ class CraftableServiceProvider extends ServiceProvider
                     __DIR__ . '/../install-stubs/database/migrations/fill_default_admin_user_and_permissions.php' => database_path('migrations') . '/' . $timestamp . '_fill_default_admin_user_and_permissions.php',
                 ], 'migrations');
             }
+
+            if (!file_exists(storage_path()."/images/avatar.png")) {
+                $this->publishes([
+                    __DIR__ . '/../resources/images/avatar.png' => storage_path().'/images',
+                ], 'images');
+            }
         }
     }
 

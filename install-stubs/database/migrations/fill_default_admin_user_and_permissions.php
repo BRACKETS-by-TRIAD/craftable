@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Brackets\AdminAuth\Models\AdminUser;
+
 
 /**
  * Class FillDefaultAdminUserAndPermissions
@@ -181,6 +183,10 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 if (is_null($userItem)) {
                     $userId = DB::table($this->userTable)->insertGetId($user);
 
+                    AdminUser::find($userId)->addMedia(storage_path()."/images/avatar.png")
+                        ->preservingOriginal()
+                        ->toMediaCollection('avatar', 'media');
+
                     foreach ($roles as $role) {
                         $roleItem = DB::table('roles')->where([
                             'name' => $role['name'],
@@ -236,6 +242,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
             foreach ($this->users as $user) {
                 $userItem = DB::table($this->userTable)->where('email', $user['email'])->first();
                 if (!is_null($userItem)) {
+                    AdminUser::find($userItem->id)->media()->delete();
                     DB::table($this->userTable)->where('id', $userItem->id)->delete();
                     DB::table('model_has_permissions')->where([
                         'model_id' => $userItem->id,
