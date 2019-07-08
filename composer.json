@@ -40,7 +40,6 @@
         "spatie/laravel-permission": "^2.5",
         "spatie/laravel-backup": "^5.0",
         "maatwebsite/excel": "^3.1",
-        "pawelmysior/laravel-publishable": "^1.2"
     },
     "autoload": {
         "classmap": [],
