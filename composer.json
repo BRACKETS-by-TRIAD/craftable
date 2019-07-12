@@ -37,6 +37,7 @@
         "brackets/advanced-logger": "^1.0",
         "brackets/translatable": "^1.0",
         "brackets/media": "^3.0",
+        "brackets/admin-sortable": "^1.0",
         "spatie/laravel-permission": "^2.5",
         "spatie/laravel-backup": "^5.0",
         "maatwebsite/excel": "^3.1"
