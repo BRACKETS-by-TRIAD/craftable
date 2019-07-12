@@ -95,7 +95,7 @@ class CraftableInitializeEnv extends Command
             if (!empty($dbPassword)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_PASSWORD=secret',
-                    'DB_PASSWORD=' . $dbPassword);
+                    'DB_PASSWORD="' . $dbPassword . '"');
             }
         }
     }
@@ -110,10 +110,10 @@ class CraftableInitializeEnv extends Command
         if (env('APP_NAME') == 'Laravel') {
             $this->strReplaceInFile(base_path('.env'),
                 'APP_NAME=Laravel',
-                'APP_NAME=Craftable');
+                'APP_NAME="Craftable"');
             $this->strReplaceInFile(base_path('.env.example'),
                 'APP_NAME=Laravel',
-                'APP_NAME=Craftable');
+                'APP_NAME="Craftable"');
         }
     }
 }
