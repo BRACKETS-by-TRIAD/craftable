@@ -30,8 +30,8 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "brackets/admin-ui": "^3.0",
-        "brackets/admin-listing": "^2.0",
+        "brackets/admin-ui": "^3.1",
+        "brackets/admin-listing": "^2.1",
         "brackets/admin-auth": "^3.0",
         "brackets/admin-translations": "^3.0",
         "brackets/advanced-logger": "^1.0",
