@@ -131,9 +131,11 @@ class CraftableInstall extends Command
         foreach ($files as $file) {
             if (strpos($file->getFilename(), 'fill_default_admin_user_and_permissions.php') !== false) {
                 //change database/migrations/*fill_default_user_and_permissions.php to use new password
-                $this->strReplaceInFile(database_path('migrations/' . $file->getFilename()),
+                $this->strReplaceInFile(
+                    database_path('migrations/' . $file->getFilename()),
                     "best package ever",
-                    "" . $this->password . "");
+                    "" . $this->password . ""
+                );
                 break;
             }
         }
@@ -170,16 +172,20 @@ class CraftableInstall extends Command
         // Scan translations
         $this->info('Scanning codebase and storing all translations');
 
-        $this->strReplaceInFile(config_path('admin-translations.php'),
+        $this->strReplaceInFile(
+            config_path('admin-translations.php'),
             '// here you can add your own directories',
             '// here you can add your own directories
         // base_path(\'routes\'), // uncomment if you have translations in your routes i.e. you have localized URLs
         base_path(\'vendor/brackets/admin-auth/src\'),
-        base_path(\'vendor/brackets/admin-auth/resources\'),');
+        base_path(\'vendor/brackets/admin-auth/resources\'),'
+        );
 
         $this->call('admin-translations:scan-and-save', [
-            'paths' => array_merge(config('admin-translations.scanned_directories'),
-                ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']),
+            'paths' => array_merge(
+                config('admin-translations.scanned_directories'),
+                ['vendor/brackets/admin-auth/src', 'vendor/brackets/admin-auth/resources']
+            ),
         ]);
     }
 
@@ -191,11 +197,12 @@ class CraftableInstall extends Command
     private function addHashToLogging(): void
     {
         if (version_compare(app()->version(), '5.6.0', '>=')) {
-            $this->strReplaceInFile(config_path('logging.php'),
+            $this->strReplaceInFile(
+                config_path('logging.php'),
                 '\'days\' => 14,',
                 '\'days\' => 90,
-            \'tap\' => [Brackets\AdvancedLogger\LogCustomizers\HashLogCustomizer::class],');
+            \'tap\' => [Brackets\AdvancedLogger\LogCustomizers\HashLogCustomizer::class],'
+            );
         }
     }
-
 }
