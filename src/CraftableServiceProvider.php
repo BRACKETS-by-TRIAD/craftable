@@ -44,6 +44,5 @@ class CraftableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }

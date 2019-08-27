@@ -1,10 +1,9 @@
 <?php
 
+use Brackets\AdminAuth\Models\AdminUser;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Brackets\AdminAuth\Models\AdminUser;
-
 
 /**
  * Class FillDefaultAdminUserAndPermissions
@@ -122,8 +121,8 @@ class FillDefaultAdminUserAndPermissions extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
      * @throws Exception
+     * @return void
      */
     public function up()
     {
@@ -155,8 +154,10 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     $roleId = $roleItem->id;
                 }
 
-                $permissionItems = DB::table('permissions')->whereIn('name', $permissions)->where('guard_name',
-                    $role['guard_name'])->get();
+                $permissionItems = DB::table('permissions')->whereIn('name', $permissions)->where(
+                    'guard_name',
+                    $role['guard_name']
+                )->get();
                 foreach ($permissionItems as $permissionItem) {
                     $roleHasPermissionData = [
                         'permission_id' => $permissionItem->id,
@@ -221,7 +222,6 @@ class FillDefaultAdminUserAndPermissions extends Migration
                         }
                     }
                 }
-
             }
         });
         app()['cache']->forget(config('permission.cache.key'));
@@ -230,8 +230,8 @@ class FillDefaultAdminUserAndPermissions extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
      * @throws Exception
+     * @return void
      */
     public function down()
     {
