@@ -54,7 +54,7 @@
             ]
         },
         "branch-alias": {
-            "dev-laravel-58": "3.1-dev"
+            "dev-master": "4.0-dev"
         }
     }
 }
