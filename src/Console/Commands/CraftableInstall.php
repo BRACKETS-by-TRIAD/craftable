@@ -5,6 +5,7 @@ namespace Brackets\Craftable\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CraftableInstall extends Command
 {
@@ -33,9 +34,9 @@ class CraftableInstall extends Command
      * Execute the console command.
      *
      * @param Filesystem $files
-     * @return mixed
+     * @return void
      */
-    public function handle(Filesystem $files)
+    public function handle(Filesystem $files): void
     {
         $this->info('Installing Craftable...');
 
@@ -81,7 +82,7 @@ class CraftableInstall extends Command
      *
      * @return void
      */
-    private function publishAllVendors()
+    private function publishAllVendors(): void
     {
         //Spatie Permission
         $this->call('vendor:publish', [
@@ -123,17 +124,17 @@ class CraftableInstall extends Command
      *
      * @return void
      */
-    private function generatePasswordAndUpdateMigration()
+    private function generatePasswordAndUpdateMigration(): void
     {
-        $this->password = str_random(10);
+        $this->password = Str::random(10);
 
         $files = File::allFiles(database_path('migrations'));
         foreach ($files as $file) {
             if (strpos($file->getFilename(), 'fill_default_admin_user_and_permissions.php') !== false) {
                 //change database/migrations/*fill_default_user_and_permissions.php to use new password
                 $this->strReplaceInFile(database_path('migrations/' . $file->getFilename()),
-                    "best package ever",
-                    "" . $this->password . "");
+                    'best package ever',
+                    '' . $this->password . '');
                 break;
             }
         }
@@ -145,7 +146,7 @@ class CraftableInstall extends Command
      * @param Filesystem $files
      * @return void
      */
-    private function generateUserStuff(Filesystem $files)
+    private function generateUserStuff(Filesystem $files): void
     {
         // TODO this is probably redundant?
         // Migrate
@@ -165,7 +166,7 @@ class CraftableInstall extends Command
      *
      * @return void
      */
-    private function scanAndSaveTranslations()
+    private function scanAndSaveTranslations(): void
     {
         // Scan translations
         $this->info('Scanning codebase and storing all translations');

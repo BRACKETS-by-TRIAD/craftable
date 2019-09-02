@@ -8,13 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 trait PublishableTrait
 {
     /**
-     *
-     *
-     * @return Boolean
+     * @return bool
      */
-    private function hasPublishedTo()
+    private function hasPublishedTo(): bool
     {
-        return in_array('published_to', $this->dates);
+        return in_array('published_to', $this->dates, true);
     }
 
     /**
@@ -28,8 +26,8 @@ trait PublishableTrait
         return $query
             ->where('published_at', '<=', Carbon::now())
             ->whereNotNull('published_at')
-            ->when($this->hasPublishedTo(), function ($query) {
-                return $query->where(function ($query2) {
+            ->when($this->hasPublishedTo(), static function ($query) {
+                return $query->where(static function ($query2) {
                     $query2->where('published_to', '>=', Carbon::now())
                         ->orWhereNull('published_to');
                 });
@@ -45,7 +43,7 @@ trait PublishableTrait
     public function scopeUnpublished(Builder $query): Builder
     {
         return $query->where('published_at', '>', Carbon::now())->orWhereNull('published_at')
-            ->when($this->hasPublishedTo(), function ($query) {
+            ->when($this->hasPublishedTo(), static function ($query) {
                 $query->orWhere('published_to', '<', Carbon::now());
             });
     }

@@ -1,9 +1,11 @@
 <?php
 
+use Brackets\AdminAuth\Models\AdminUser;
+use Carbon\Carbon;
+use Illuminate\Config\Repository;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Brackets\AdminAuth\Models\AdminUser;
 
 
 /**
@@ -12,7 +14,7 @@ use Brackets\AdminAuth\Models\AdminUser;
 class FillDefaultAdminUserAndPermissions extends Migration
 {
     /**
-     * @var \Illuminate\Config\Repository|mixed
+     * @var Repository|mixed
      */
     protected $guardName;
     /**
@@ -79,8 +81,8 @@ class FillDefaultAdminUserAndPermissions extends Migration
             return [
                 'name' => $permission,
                 'guard_name' => $this->guardName,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ];
         })->toArray();
 
@@ -89,8 +91,8 @@ class FillDefaultAdminUserAndPermissions extends Migration
             [
                 'name' => 'Administrator',
                 'guard_name' => $this->guardName,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
                 'permissions' => $defaultPermissions,
             ],
         ];
@@ -103,8 +105,8 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 'email' => 'administrator@brackets.sk',
                 'password' => Hash::make($this->password),
                 'remember_token' => null,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
                 'activated' => true,
                 'roles' => [
                     [
@@ -122,13 +124,13 @@ class FillDefaultAdminUserAndPermissions extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
      * @throws Exception
+     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        if (is_null($this->userClassName)) {
-            throw new Exception('Admin user model not defined');
+        if ($this->userClassName === null) {
+            throw new RuntimeException('Admin user model not defined');
         }
         DB::transaction(function () {
             foreach ($this->permissions as $permission) {
@@ -136,7 +138,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     'name' => $permission['name'],
                     'guard_name' => $permission['guard_name']
                 ])->first();
-                if (is_null($permissionItem)) {
+                if ($permissionItem === null) {
                     DB::table('permissions')->insert($permission);
                 }
             }
@@ -149,7 +151,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     'name' => $role['name'],
                     'guard_name' => $role['guard_name']
                 ])->first();
-                if (is_null($roleItem)) {
+                if ($roleItem === null) {
                     $roleId = DB::table('roles')->insertGetId($role);
                 } else {
                     $roleId = $roleItem->id;
@@ -163,7 +165,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                         'role_id' => $roleId
                     ];
                     $roleHasPermissionItem = DB::table('role_has_permissions')->where($roleHasPermissionData)->first();
-                    if (is_null($roleHasPermissionItem)) {
+                    if ($roleHasPermissionItem === null) {
                         DB::table('role_has_permissions')->insert($roleHasPermissionData);
                     }
                 }
@@ -180,10 +182,10 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     'email' => $user['email'],
                 ])->first();
 
-                if (is_null($userItem)) {
+                if ($userItem === null) {
                     $userId = DB::table($this->userTable)->insertGetId($user);
 
-                    AdminUser::find($userId)->addMedia(storage_path()."/images/avatar.png")
+                    AdminUser::find($userId)->addMedia(storage_path() . '/images/avatar.png')
                         ->preservingOriginal()
                         ->toMediaCollection('avatar', 'media');
 
@@ -199,7 +201,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                             'model_type' => $this->userClassName
                         ];
                         $modelHasRoleItem = DB::table('model_has_roles')->where($modelHasRoleData)->first();
-                        if (is_null($modelHasRoleItem)) {
+                        if ($modelHasRoleItem === null) {
                             DB::table('model_has_roles')->insert($modelHasRoleData);
                         }
                     }
@@ -216,7 +218,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                             'model_type' => $this->userClassName
                         ];
                         $modelHasPermissionItem = DB::table('model_has_permissions')->where($modelHasPermissionData)->first();
-                        if (is_null($modelHasPermissionItem)) {
+                        if ($modelHasPermissionItem === null) {
                             DB::table('model_has_permissions')->insert($modelHasPermissionData);
                         }
                     }
@@ -230,18 +232,18 @@ class FillDefaultAdminUserAndPermissions extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
      * @throws Exception
+     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        if (is_null($this->userClassName)) {
-            throw new Exception('Admin user model not defined');
+        if ($this->userClassName === null) {
+            throw new RuntimeException('Admin user model not defined');
         }
         DB::transaction(function () {
             foreach ($this->users as $user) {
                 $userItem = DB::table($this->userTable)->where('email', $user['email'])->first();
-                if (!is_null($userItem)) {
+                if ($userItem !== null) {
                     AdminUser::find($userItem->id)->media()->delete();
                     DB::table($this->userTable)->where('id', $userItem->id)->delete();
                     DB::table('model_has_permissions')->where([
@@ -260,7 +262,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     'name' => $role['name'],
                     'guard_name' => $role['guard_name']
                 ])->first();
-                if (!is_null($roleItem)) {
+                if ($roleItem !== null) {
                     DB::table('roles')->where('id', $roleItem->id)->delete();
                     DB::table('model_has_roles')->where('role_id', $roleItem->id)->delete();
                 }
@@ -271,7 +273,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     'name' => $permission['name'],
                     'guard_name' => $permission['guard_name']
                 ])->first();
-                if (!is_null($permissionItem)) {
+                if ($permissionItem !== null) {
                     DB::table('permissions')->where('id', $permissionItem->id)->delete();
                     DB::table('model_has_permissions')->where('permission_id', $permissionItem->id)->delete();
                 }

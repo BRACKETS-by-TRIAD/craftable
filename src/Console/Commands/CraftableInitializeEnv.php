@@ -24,9 +24,9 @@ class CraftableInitializeEnv extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Initializing database environment variables...');
 
@@ -57,9 +57,9 @@ class CraftableInitializeEnv extends Command
      *
      * @return void
      */
-    private function getDbSettings()
+    private function getDbSettings(): void
     {
-        if (env('DB_DATABASE') == 'homestead' && $this->input->isInteractive()) {
+        if (env('DB_DATABASE') === 'homestead' && $this->input->isInteractive()) {
             $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 1);
             if (!empty($dbConnection)) {
                 $this->strReplaceInFile(base_path('.env'),
@@ -73,7 +73,7 @@ class CraftableInitializeEnv extends Command
                     'DB_HOST=' . $dbHost);
             }
             $dbPort = $this->anticipate('What is your database port?', ['3306', '5432'],
-                env('DB_DATABASE') == 'mysql' ? '3306' : '5432');
+                env('DB_DATABASE') === 'mysql' ? '3306' : '5432');
             if (!empty($dbPort)) {
                 $this->strReplaceInFile(base_path('.env'),
                     'DB_PORT=3306',
@@ -105,9 +105,9 @@ class CraftableInitializeEnv extends Command
      *
      * @return void
      */
-    private function setApplicationName()
+    private function setApplicationName(): void
     {
-        if (env('APP_NAME') == 'Laravel') {
+        if (env('APP_NAME') === 'Laravel') {
             $this->strReplaceInFile(base_path('.env'),
                 'APP_NAME=Laravel',
                 'APP_NAME="Craftable"');
