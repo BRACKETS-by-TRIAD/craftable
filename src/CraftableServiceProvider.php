@@ -29,9 +29,9 @@ class CraftableServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
 
-            if (!file_exists(storage_path()."/images/avatar.png")) {
+            if (!file_exists(storage_path() . '/images/avatar.png')) {
                 $this->publishes([
-                    __DIR__ . '/../resources/images/avatar.png' => storage_path().'/images/avatar.png',
+                    __DIR__ . '/../resources/images/avatar.png' => storage_path() . '/images/avatar.png',
                 ], 'images');
             }
         }
