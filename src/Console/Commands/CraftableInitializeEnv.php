@@ -59,7 +59,7 @@ class CraftableInitializeEnv extends Command
      */
     private function getDbSettings(): void
     {
-        if (env('DB_DATABASE') === 'homestead' && $this->input->isInteractive()) {
+        if ((env('DB_DATABASE') === 'homestead' || env('DB_DATABASE') === 'laravel') && $this->input->isInteractive()) {
             $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 1);
             if (!empty($dbConnection)) {
                 $this->strReplaceInFile(
