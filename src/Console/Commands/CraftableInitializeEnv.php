@@ -45,8 +45,9 @@ class CraftableInitializeEnv extends Command
      * @param string $fileName 
      * @return int|bool
      */
-    private function updateEnv($key, $value, $fileName = base_path('.env'))
+    private function updateEnv($key, $value, $fileName = '.env')
     {
+        $fileName = base_path($fileName);
         $content = File::get($fileName);
         return File::put($fileName, preg_replace('/' . $key . '=.*/', $value, $content));
     }
@@ -111,7 +112,7 @@ class CraftableInitializeEnv extends Command
     {
         if (env('APP_NAME') === 'Laravel') {
             $this->updateEnv('APP_NAME', 'Craftable');
-            $this->updateEnv('APP_NAME', 'Craftable', base_path('.env.example'));
+            $this->updateEnv('APP_NAME', 'Craftable', '.env.example');
         }
     }
 
