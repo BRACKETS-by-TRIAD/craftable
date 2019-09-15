@@ -49,7 +49,7 @@ class CraftableInitializeEnv extends Command
     {
         $fileName = base_path($fileName);
         $content = File::get($fileName);
-        return File::put($fileName, preg_replace('/' . $key . '=.*/', $key . '=' . $value, $content);
+        return File::put($fileName, preg_replace('/' . $key . '=.*/', $key . '=' . $value, $content));
     }
 
     /**
