@@ -13,7 +13,7 @@
 
 ## About ##
 
-Hi Crafter, welcome to the official documentation for Craftable v3 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
+Hi Crafter, welcome to the official documentation for Craftable 5 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
 
 ![Craftable administration area example](https://docs.getcraftable.com/assets/posts-crud.png "Craftable administration area example")
 
@@ -54,17 +54,15 @@ Craftable uses all the packages above. It also uses some other 3rd party package
 ## Requirements ##
 
 Craftable requires:
-- PHP 7.1+
+- PHP 7.2+
 - Supported databases:
   - MySQL 5.7+
   - PostgreSQL 9.5+
 - npm 5.3+
 - node 8.4+
 
-Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 5.5, 5.6 and 5.7:
-- https://laravel.com/docs/5.5/installation#server-requirements
-- https://laravel.com/docs/5.6/installation#server-requirements
-- https://laravel.com/docs/5.7/installation#server-requirements
+Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 6:
+- https://laravel.com/docs/6.x/installation#server-requirements
 
 ## Installation ##
 
@@ -82,7 +80,7 @@ Now you can create a new Craftable project:
 craftable new my_project
 ```
 
-This will install Craftable using latest Laravel version (currently 5.7). If you prefer tu use latest LTS Laravel version (currently 5.5), use `--lts` flag:
+This will install Craftable using latest Laravel version (currently 6.0). If you prefer tu use latest LTS Laravel version (currently 6.0), use `--lts` flag:
 ```bash
 craftable new --lts my_project
 ```
@@ -94,7 +92,7 @@ Command is going to generate and **print the password for the default administra
 
 ### Add Craftable to existing project ###
 
-Or alternatively, you can use your existing Laravel 5.5 application. Start with requiring these two main packages:
+Or alternatively, you can use your existing Laravel application. Start with requiring these two main packages:
 
 ```bash
 composer require brackets/craftable
