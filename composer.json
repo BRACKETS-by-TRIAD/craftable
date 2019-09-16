@@ -30,13 +30,13 @@
     ],
     "require": {
         "php": "^7.2",
-        "brackets/admin-ui": "dev-laravel-6",
-        "brackets/admin-listing": "dev-laravel-6",
-        "brackets/admin-auth": "dev-laravel-6",
-        "brackets/admin-translations": "dev-laravel-6",
-        "brackets/advanced-logger": "dev-laravel-6",
-        "brackets/translatable": "dev-laravel-6",
-        "brackets/media": "dev-laravel-6",
+        "brackets/admin-auth": "^5.0",
+        "brackets/admin-listing": "^3.0",
+        "brackets/admin-translations": "^4.0",
+        "brackets/admin-ui": "^4.0",
+        "brackets/advanced-logger": "^2.0",
+        "brackets/media": "^4.0",
+        "brackets/translatable": "^2.0",
         "illuminate/support": "~6.0",
         "spatie/laravel-permission": "^3.0",
         "spatie/laravel-backup": "^6.0",
@@ -55,7 +55,7 @@
             ]
         },
         "branch-alias": {
-            "dev-master": "4.0-dev"
+            "dev-master": "5.0-dev"
         }
     }
 }
