@@ -15,7 +15,7 @@
 
 Hi Crafter, welcome to the official documentation for Craftable 5 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
 
-![Craftable administration area example](https://docs.getcraftable.com/assets/posts-crud.png "Craftable administration area example")
+![Craftable administration area example](https://www.getcraftable.com/docs/5.0/images/posts-crud.png "Craftable administration area example")
 
 You could call it CMS, but it's a very slim one, with as little content to manage as possible. It has:
 - UI - nice admin template based on CoreUI (http://coreui.io/)
