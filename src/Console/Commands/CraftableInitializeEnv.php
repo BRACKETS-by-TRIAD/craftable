@@ -38,79 +38,67 @@ class CraftableInitializeEnv extends Command
     }
 
     /**
-     * Replace string in file
+     * Update .env setting
      *
-     * @param string $fileName
-     * @param string $find
-     * @param string $replaceWith
+     * @param string $key
+     * @param string $value
+     * @param string $fileName 
      * @return int|bool
      */
-    private function strReplaceInFile($fileName, $find, $replaceWith)
+    private function updateEnv($key, $value, $fileName = '.env')
     {
+        $fileName = base_path($fileName);
         $content = File::get($fileName);
-        return File::put($fileName, str_replace($find, $replaceWith, $content));
+        return File::put($fileName, preg_replace('/' . $key . '=.*/', $key . '=' . $value, $content));
     }
 
     /**
-     * If default database name in env is present and interaction mode is on,
-     * asks for database settings. Not provided values will not be overwritten.
+     * If default database values in .env are present and interaction mode is on,
+     * asks for database settings. Values not provided will not be overwritten.
      *
      * @return void
      */
     private function getDbSettings(): void
     {
-        if ((env('DB_DATABASE') === 'homestead' || env('DB_DATABASE') === 'laravel') && $this->input->isInteractive()) {
-            $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 1);
+        if ($this->isDefaultDatabaseEnv() && $this->input->isInteractive()) {
+            $dbConnection = $this->choice('What database driver do you use?', ['mysql', 'pgsql'], 0);
             if (!empty($dbConnection)) {
-                $this->strReplaceInFile(
-                    base_path('.env'),
-                    'DB_CONNECTION=mysql',
-                    'DB_CONNECTION=' . $dbConnection
-                );
+                $this->updateEnv('DB_CONNECTION', $dbConnection);
             }
+
             $dbHost = $this->anticipate('What is your database host?', ['localhost', '127.0.0.1'], '127.0.0.1');
             if (!empty($dbHost)) {
-                $this->strReplaceInFile(
-                    base_path('.env'),
-                    'DB_HOST=127.0.0.1',
-                    'DB_HOST=' . $dbHost
-                );
+                $this->updateEnv('DB_HOST', $dbHost);
             }
+
             $dbPort = $this->anticipate(
                 'What is your database port?',
                 ['3306', '5432'],
-                env('DB_DATABASE') === 'mysql' ? '3306' : '5432'
+                env('DB_CONNECTION') === 'mysql' ? '3306' : '5432'
             );
             if (!empty($dbPort)) {
-                $this->strReplaceInFile(
-                    base_path('.env'),
-                    'DB_PORT=3306',
-                    'DB_PORT=' . $dbPort
-                );
+                $this->updateEnv('DB_PORT', $dbPort);
             }
-            $DbDatabase = $this->ask('What is your database name?', 'homestead');
-            if (!empty($DbDatabase)) {
-                $this->strReplaceInFile(
-                    base_path('.env'),
-                    'DB_DATABASE=homestead',
-                    'DB_DATABASE=' . $DbDatabase
-                );
+
+            $dbDatabase = $this->anticipate('What is your database name?', 
+                ['laravel', 'homestead'],
+                'laravel'
+            );
+            if (!empty($dbDatabase)) {
+                $this->updateEnv('DB_DATABASE', $dbDatabase);
             }
-            $dbUsername = $this->ask('What is your database user name?', 'homestead');
+
+            $dbUsername = $this->anticipate('What is your database user name?',
+                ['root', 'homestead'], 
+                'root'
+            );
             if (!empty($dbUsername)) {
-                $this->strReplaceInFile(
-                    base_path('.env'),
-                    'DB_USERNAME=homestead',
-                    'DB_USERNAME=' . $dbUsername
-                );
+                $this->updateEnv('DB_USERNAME', $dbUsername);
             }
-            $dbPassword = $this->ask('What is your database user password?', 'secret');
+
+            $dbPassword = $this->secret('What is your database user password?', 'secret');
             if (!empty($dbPassword)) {
-                $this->strReplaceInFile(
-                    base_path('.env'),
-                    'DB_PASSWORD=secret',
-                    'DB_PASSWORD="' . $dbPassword . '"'
-                );
+                $this->updateEnv('DB_PASSWORD', $dbPassword);
             }
         }
     }
@@ -123,16 +111,29 @@ class CraftableInitializeEnv extends Command
     private function setApplicationName(): void
     {
         if (env('APP_NAME') === 'Laravel') {
-            $this->strReplaceInFile(
-                base_path('.env'),
-                'APP_NAME=Laravel',
-                'APP_NAME="Craftable"'
-            );
-            $this->strReplaceInFile(
-                base_path('.env.example'),
-                'APP_NAME=Laravel',
-                'APP_NAME="Craftable"'
-            );
+            $this->updateEnv('APP_NAME', 'Craftable');
+            $this->updateEnv('APP_NAME', 'Craftable', '.env.example');
         }
+    }
+
+    /**
+     * Determines if the .env file has default database settings
+     * 
+     * @return boolean
+     */
+    private function isDefaultDatabaseEnv(): bool
+    {
+        if ( 
+            version_compare(app()::VERSION, '5.8.35', '<') && 
+                (env('DB_DATABASE') === 'homestead' && 
+                    env('DB_USERNAME') === 'homestead') ||
+            version_compare(app()::VERSION, '5.8.35', '>=') && 
+                (env('DB_DATABASE') === 'laravel' && 
+                    env('DB_USERNAME') === 'root') 
+        ) {
+            return true;
+        }
+
+        return false;
     }
 }
