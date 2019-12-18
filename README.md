@@ -41,13 +41,13 @@ You can see an administration of:
 ### Made of components ###
 
 Our intent was to split all the stuff into several packages with as least dependencies as possible. This is what we're coming with at the moment:
-- [Admin UI](https://docs.getcraftable.com/#/admin-ui#admin-ui) - admin template (CoreUI assets, blades, Vue)
-- [Admin Generator](https://docs.getcraftable.com/#/admin-generator#admin-generator) - CRUD generator for Eloquent models
-- [Admin Authentication](https://docs.getcraftable.com/#/admin-auth#admin-auth) - ability to authenticate into Admin area
-- [Translatable](https://docs.getcraftable.com/#/translatable#translatable) - ability to have translatable content (extending Laravel's default Localization)
-- [Admin Listing](https://docs.getcraftable.com/#/admin-listing#admin-listing) - ability to quickly build a query for administration listing for your Eloquent models
-- [Media Library](https://docs.getcraftable.com/#/media#media) - ability to attach media to eloquent models
-- [Admin Translations](https://docs.getcraftable.com/#/admin-translations#admin-translations) - translation manager (with UI)
+- [Admin UI](https://getcraftable.com/docs/5.0/user-interface) - admin template (CoreUI assets, blades, Vue)
+- [Admin Generator](https://getcraftable.com/docs/5.0/explore-generator) - CRUD generator for Eloquent models
+- [Admin Authentication](https://getcraftable.com/docs/5.0/auth) - ability to authenticate into Admin area
+- [Translatable](https://getcraftable.com/docs/5.0/translatable) - ability to have translatable content (extending Laravel's default Localization)
+- [Admin Listing](https://getcraftable.com/docs/5.0/listing) - ability to quickly build a query for administration listing for your Eloquent models
+- [Media Library](https://getcraftable.com/docs/5.0/media) - ability to attach media to eloquent models
+- [Admin Translations](https://getcraftable.com/docs/5.0/translations) - translation manager (with UI)
 
 Craftable uses all the packages above. It also uses some other 3rd party packages (like Spatie's `spatie/laravel-permission`) and provides some basic default configuration to speed up a development of a typical administration interface.
 
@@ -130,9 +130,9 @@ You can find full documentation of this package and other our packages Craftable
 
 ## Where to go next? ##
 
-At this point you are ready to start building your administration area. You probably want to start building a typical CRUD interface for your eloquent models. You should definitely check our [Admin Generator](admin-generator) documentation.
+At this point you are ready to start building your administration area. You probably want to start building a typical CRUD interface for your eloquent models. You should definitely check our [Admin Generator](https://getcraftable.com/docs/5.0/explore-generator) documentation.
 
-In case you rather want to create some atypical custom made administration, then you probably want to head over to [Admin UI](admin-ui) package.
+In case you rather want to create some atypical custom made administration, then you probably want to head over to [Admin UI](https://getcraftable.com/docs/5.0/user-interface) package.
 
 Have fun & craft something awesome!
 
