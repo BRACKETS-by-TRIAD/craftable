@@ -73,6 +73,9 @@ class FillDefaultAdminUserAndPermissions extends Migration
 
             // ability to upload
             'admin.upload',
+
+            //ability to impersonal login
+            'admin.admin-user.impersonal-login'
         ]);
 
         //Add new permissions
@@ -156,7 +159,10 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     $roleId = $roleItem->id;
                 }
 
-                $permissionItems = DB::table('permissions')->whereIn('name', $permissions)->where(
+                $permissionItems = DB::table('permissions')
+                    ->whereIn('name', $permissions)
+                    ->where('name', '!=', 'admin.admin-user.impersonal-login')
+                    ->where(
                     'guard_name',
                     $role['guard_name']
                 )->get();
