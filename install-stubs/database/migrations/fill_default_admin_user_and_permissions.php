@@ -95,7 +95,9 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 'guard_name' => $this->guardName,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'permissions' => $defaultPermissions,
+                'permissions' => $defaultPermissions->reject(function ($permission) {
+                    return $permission === 'admin.admin-user.impersonal-login';
+                }),
             ],
         ];
 
@@ -161,7 +163,6 @@ class FillDefaultAdminUserAndPermissions extends Migration
 
                 $permissionItems = DB::table('permissions')
                     ->whereIn('name', $permissions)
-                    ->where('name', '!=', 'admin.admin-user.impersonal-login')
                     ->where(
                     'guard_name',
                     $role['guard_name']
