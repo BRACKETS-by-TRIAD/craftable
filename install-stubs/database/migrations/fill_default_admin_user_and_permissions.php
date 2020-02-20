@@ -73,6 +73,9 @@ class FillDefaultAdminUserAndPermissions extends Migration
 
             // ability to upload
             'admin.upload',
+
+            //ability to impersonal login
+            'admin.admin-user.impersonal-login'
         ]);
 
         //Add new permissions
@@ -92,7 +95,9 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 'guard_name' => $this->guardName,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'permissions' => $defaultPermissions,
+                'permissions' => $defaultPermissions->reject(function ($permission) {
+                    return $permission === 'admin.admin-user.impersonal-login';
+                }),
             ],
         ];
 
@@ -156,7 +161,9 @@ class FillDefaultAdminUserAndPermissions extends Migration
                     $roleId = $roleItem->id;
                 }
 
-                $permissionItems = DB::table('permissions')->whereIn('name', $permissions)->where(
+                $permissionItems = DB::table('permissions')
+                    ->whereIn('name', $permissions)
+                    ->where(
                     'guard_name',
                     $role['guard_name']
                 )->get();
