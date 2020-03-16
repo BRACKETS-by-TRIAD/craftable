@@ -1,6 +1,6 @@
 {
     "name": "brackets/craftable",
-    "description": "Administration toolkit for Laravel 5 - starting point for developing administration interface",
+    "description": "Administration toolkit for Laravel 7 - starting point for developing administration interface",
     "keywords": [
         "craftable",
         "crud",
@@ -18,18 +18,24 @@
         {
             "name": "Pavol Perdík",
             "email": "pavol.perdik@brackets.sk",
-            "homepage": "https://www.brackets.sk/en",
+            "homepage": "https://www.brackets.sk",
             "role": "Developer"
         },
         {
             "name": "David Běhal",
             "email": "david.behal@brackets.sk",
-            "homepage": "https://www.brackets.sk/en",
+            "homepage": "https://www.brackets.sk",
+            "role": "Developer"
+        },
+        {
+            "name": "Richard Dominik",
+            "email": "richard.dominik@brackets.sk",
+            "homepage": "https://www.brackets.sk",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2.5",
         "brackets/admin-auth": "^5.0",
         "brackets/admin-listing": "^3.0",
         "brackets/admin-translations": "^4.0",
@@ -37,7 +43,7 @@
         "brackets/advanced-logger": "^2.0",
         "brackets/media": "^4.0",
         "brackets/translatable": "^2.0",
-        "illuminate/support": "~6.0",
+        "illuminate/support": "^6.0|^7.0",
         "spatie/laravel-permission": "^3.0",
         "spatie/laravel-backup": "^6.0",
         "maatwebsite/excel": "^3.1"
