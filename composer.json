@@ -35,13 +35,13 @@
         }
     ],
     "require": {
-        "php": "^7.2.5|^7.3.0",
-        "brackets/admin-auth": "^5.0",
+        "php": "^7.4.0",
+        "brackets/admin-auth": "^6.0",
         "brackets/admin-listing": "^3.0",
         "brackets/admin-translations": "^4.0",
         "brackets/admin-ui": "^4.0",
         "brackets/advanced-logger": "^2.0",
-        "brackets/media": "^4.0",
+        "brackets/media": "^5.0",
         "brackets/translatable": "^2.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
         "spatie/laravel-permission": "^3.0",
@@ -61,7 +61,7 @@
             ]
         },
         "branch-alias": {
-            "dev-master": "5.0-dev"
+            "dev-master": "6.0-dev"
         }
     }
 }
