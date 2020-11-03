@@ -13,7 +13,7 @@
 
 ## About ##
 
-Hi Crafter, welcome to the official documentation for Craftable 5 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
+Hi Crafter, welcome to the official documentation for Craftable 6 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
 
 ![Craftable administration area example](https://www.getcraftable.com/docs/5.0/images/posts-crud.png "Craftable administration area example")
 
@@ -54,15 +54,15 @@ Craftable uses all the packages above. It also uses some other 3rd party package
 ## Requirements ##
 
 Craftable requires:
-- PHP 7.2+
+- PHP 7.4+
 - Supported databases:
   - MySQL 5.7+
   - PostgreSQL 9.5+
 - npm 5.3+
 - node 8.4+
 
-Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 6:
-- https://laravel.com/docs/6.x/installation#server-requirements
+Craftable uses Laravel so you should check out its requirements too. It is compatible with Laravel 8:
+- https://laravel.com/docs/8.x/installation#server-requirements
 
 ## Installation ##
 
