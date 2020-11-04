@@ -44,6 +44,7 @@
         "brackets/media": "^5.0",
         "brackets/translatable": "^2.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
+        "laravel/legacy-factories": "^1.1",
         "spatie/laravel-permission": "^3.0",
         "spatie/laravel-backup": "^6.0",
         "maatwebsite/excel": "^3.1"
