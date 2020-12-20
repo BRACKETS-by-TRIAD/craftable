@@ -28,7 +28,7 @@ class CraftableInstall extends Command
      *
      * @var string
      */
-    protected $password = 'best package ever';
+    protected $password = '';
 
     /**
      * Execute the console command.
@@ -42,23 +42,23 @@ class CraftableInstall extends Command
 
         $this->publishAllVendors();
 
-        $this->generatePasswordAndUpdateMigration();
-
         $this->addHashToLogging();
 
         $this->call('admin-ui:install');
 
-        $this->call('admin-auth:install');
+        $this->call('admin-auth:install', ['--dont-install-admin-ui' => true]);
 
         $this->generateUserStuff($files);
 
-        $this->call('admin-translations:install');
+        $this->call('admin-translations:install', ['--dont-install-admin-ui' => true]);
 
         $this->scanAndSaveTranslations();
 
         $this->call('admin-listing:install');
 
-        $this->comment('Admin password is: ' . $this->password);
+        if ($this->password) {
+            $this->comment('Admin password is: ' . $this->password);
+        }
 
         $this->info('Craftable installed.');
     }
@@ -99,11 +99,8 @@ class CraftableInstall extends Command
             '--provider' => "Spatie\\Backup\\BackupServiceProvider",
         ]);
 
-        //Media
-        $this->call('vendor:publish', [
-            '--provider' => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
-            '--tag' => 'migrations'
-        ]);
+        $this->publishSpatieMediaLibrary();
+
         $this->call('vendor:publish', [
             '--provider' => "Brackets\\Media\\MediaServiceProvider",
         ]);
@@ -113,10 +110,44 @@ class CraftableInstall extends Command
             '--provider' => "Brackets\\AdvancedLogger\\AdvancedLoggerServiceProvider",
         ]);
 
-        //Craftable
-        $this->call('vendor:publish', [
-            '--provider' => "Brackets\\Craftable\\CraftableServiceProvider",
-        ]);
+        $this->publishCraftable();
+    }
+
+    private function publishCraftable()
+    {
+        $alreadyMigrated = false;
+        $files = File::allFiles(database_path('migrations'));
+        foreach ($files as $file) {
+            if (strpos($file->getFilename(), 'fill_default_admin_user_and_permissions.php') !== false) {
+                $alreadyMigrated = true;
+                break;
+            }
+        }
+        if (!$alreadyMigrated) {
+            $this->call('vendor:publish', [
+                '--provider' => "Brackets\\Craftable\\CraftableServiceProvider",
+            ]);
+
+            $this->generatePasswordAndUpdateMigration();
+        }
+    }
+
+    private function publishSpatieMediaLibrary()
+    {
+        $alreadyMigrated = false;
+        $files = File::allFiles(database_path('migrations'));
+        foreach ($files as $file) {
+            if (strpos($file->getFilename(), 'create_media_table.php') !== false) {
+                $alreadyMigrated = true;
+                break;
+            }
+        }
+        if (!$alreadyMigrated) {
+            $this->call('vendor:publish', [
+                '--provider' => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+                '--tag' => 'migrations'
+            ]);
+        }
     }
 
     /**
