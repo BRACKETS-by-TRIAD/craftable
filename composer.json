@@ -35,7 +35,7 @@
         }
     ],
     "require": {
-        "php": "^7.4.0",
+        "php": "^7.4.0|^8.0",
         "brackets/admin-auth": "^6.0",
         "brackets/admin-listing": "^3.0",
         "brackets/admin-translations": "^4.0",
