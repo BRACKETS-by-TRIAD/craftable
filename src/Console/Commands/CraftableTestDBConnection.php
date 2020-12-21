@@ -24,9 +24,9 @@ class CraftableTestDBConnection extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
-    public function handle(): void
+    public function handle(): int
     {
         $this->info('Testing the database connection...');
 
@@ -34,9 +34,10 @@ class CraftableTestDBConnection extends Command
             DB::connection()->getPdo();
         } catch (\Exception $e) {
             $this->error("Could not connect to the database.  Please check your configuration. Error: " . $e->getMessage());
-            return ;
+            return 1;
         }
 
         $this->info('...connection OK');
+        return 0;
     }
 }
