@@ -4,6 +4,7 @@ namespace Brackets\Craftable;
 
 use Brackets\Craftable\Console\Commands\CraftableInitializeEnv;
 use Brackets\Craftable\Console\Commands\CraftableInstall;
+use Brackets\Craftable\Console\Commands\CraftableTestDBConnection;
 use Illuminate\Support\ServiceProvider;
 
 class CraftableServiceProvider extends ServiceProvider
@@ -18,6 +19,7 @@ class CraftableServiceProvider extends ServiceProvider
         $this->commands([
             CraftableInitializeEnv::class,
             CraftableInstall::class,
+            CraftableTestDBConnection::class,
         ]);
 
         if ($this->app->runningInConsole()) {
