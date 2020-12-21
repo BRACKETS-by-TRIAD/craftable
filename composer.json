@@ -36,12 +36,12 @@
     ],
     "require": {
         "php": "^7.4.0|^8.0",
-        "brackets/admin-auth": "^6.0",
+        "brackets/admin-auth": "^7.0",
         "brackets/admin-listing": "^3.0",
         "brackets/admin-translations": "^4.0",
         "brackets/admin-ui": "^4.0",
         "brackets/advanced-logger": "^2.0",
-        "brackets/media": "^5.0",
+        "brackets/media": "^6.0",
         "brackets/translatable": "^2.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
         "laravel/legacy-factories": "^1.1",
@@ -62,7 +62,7 @@
             ]
         },
         "branch-alias": {
-            "dev-master": "6.0-dev"
+            "dev-master": "7.0-dev"
         }
     }
 }
