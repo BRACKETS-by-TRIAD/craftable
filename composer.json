@@ -35,18 +35,18 @@
         }
     ],
     "require": {
-        "php": "^7.4.0|^8.0",
+        "php": "^8.0.2",
         "brackets/admin-auth": "^7.0",
         "brackets/admin-listing": "^3.0",
         "brackets/admin-translations": "^4.0",
         "brackets/admin-ui": "^4.0",
-        "brackets/advanced-logger": "^2.0",
-        "brackets/media": "^6.0",
+        "brackets/advanced-logger": "^3.0",
+        "brackets/media": "^7.0",
         "brackets/translatable": "^2.0",
-        "illuminate/support": "^6.0|^7.0|^8.0",
+        "illuminate/support": "^9.0",
         "laravel/legacy-factories": "^1.1",
-        "spatie/laravel-permission": "^3.0",
-        "spatie/laravel-backup": "^6.0",
+        "spatie/laravel-permission": "^3.0|^4.0|^5.0",
+        "spatie/laravel-backup": "^6.0|^7.0|^8.0",
         "maatwebsite/excel": "^3.1"
     },
     "autoload": {
@@ -62,7 +62,7 @@
             ]
         },
         "branch-alias": {
-            "dev-master": "7.0-dev"
+            "dev-master": "8.0-dev"
         }
     }
 }
