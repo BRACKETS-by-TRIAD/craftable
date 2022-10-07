@@ -1,5 +1,10 @@
 # Craftable #
 
+## Hacktoberfest
+
+We are participating in [Hacktoberfest](https://hacktoberfest.com/)! 
+You are more than welcome to take a look into the list of issues and contribute in any of them. Happy Hacktoberfest!
+
 - [About](#about)
   - [Demo](#demo)
   - [Packages used](#made-of-components)
