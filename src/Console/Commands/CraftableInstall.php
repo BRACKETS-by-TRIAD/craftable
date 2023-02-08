@@ -87,7 +87,7 @@ class CraftableInstall extends Command
         //Spatie Permission
         $this->call('vendor:publish', [
             '--provider' => 'Spatie\\Permission\\PermissionServiceProvider',
-            '--tag' => 'migrations'
+            '--tag' => 'permission-migrations'
         ]);
         $this->call('vendor:publish', [
             '--provider' => 'Spatie\\Permission\\PermissionServiceProvider',
