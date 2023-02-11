@@ -1,9 +1,10 @@
-# Craftable #
+# 🔥 BIG NEWS 🔥
 
-## Hacktoberfest
+We have just released [Craftable PRO](https://craftable.pro) - the premium version of this popular open-source laravel admin panel builder. Pro version comes with fresh UI built on top of Tailwind, it uses latest Laravel and InertiaJS and ships with lot of [new features](https://craftable.pro/#features).
 
-We are participating in [Hacktoberfest](https://hacktoberfest.com/)! 
-You are more than welcome to take a look into the list of issues and contribute in any of them. Happy Hacktoberfest!
+---
+
+# Craftable - build admin panels with Laravel #
 
 - [About](#about)
   - [Demo](#demo)
