@@ -35,14 +35,14 @@
         }
     ],
     "require": {
-        "php": "^8.0.2",
-        "brackets/admin-auth": "^7.0",
-        "brackets/admin-listing": "^3.0",
-        "brackets/admin-translations": "^4.0",
-        "brackets/admin-ui": "^4.0",
-        "brackets/advanced-logger": "^3.0",
-        "brackets/media": "^7.0",
-        "brackets/translatable": "^2.0",
+        "php": "^8.0.2|^8.1",
+        "brackets/admin-auth": "dev-Feat/Update-to-Laravel-10",
+        "brackets/admin-listing": "dev-Feat/Upgrade-Craftable-To-Laravel-10",
+        "brackets/admin-translations": "dev-Feat/Upgrade-Craftable-to-Laravel-10",
+        "brackets/admin-ui": "dev-master",
+        "brackets/advanced-logger": "dev-master",
+        "brackets/media": "dev-Feat/Upgrade-Craftable-To-Laravel-10",
+        "brackets/translatable": "dev-Feat/Upgrade-To-Laravel-10",
         "illuminate/support": "^9.0",
         "laravel/legacy-factories": "^1.1",
         "spatie/laravel-permission": "^3.0|^4.0|^5.0",
@@ -64,5 +64,28 @@
         "branch-alias": {
             "dev-master": "8.0-dev"
         }
-    }
+    },
+
+    "repositories": [
+
+        {
+            "type": "path",
+            "url": "../admin-listing"
+        }, 
+
+        {
+            "type": "path",
+            "url": "../admin-translations"
+        },
+
+        {
+            "type": "path",
+            "url": "../media"
+        },
+
+        {
+            "type": "path",
+            "url": "../translatable"
+        }
+    ]
 }
