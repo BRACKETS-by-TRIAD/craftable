@@ -87,5 +87,7 @@
             "type": "path",
             "url": "../translatable"
         }
-    ]
+    ],
+
+    "minimum-stability": "stable"
 }
