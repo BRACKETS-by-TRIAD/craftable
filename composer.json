@@ -43,7 +43,7 @@
         "brackets/advanced-logger": "^3.0",
         "brackets/media": "^7.0",
         "brackets/translatable": "^2.0",
-        "illuminate/support": "^9.0",
+        "illuminate/support": "^9.0|^10.0",
         "laravel/legacy-factories": "^1.1",
         "spatie/laravel-permission": "^3.0|^4.0|^5.0",
         "spatie/laravel-backup": "^6.0|^7.0|^8.0",
