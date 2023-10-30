@@ -19,7 +19,7 @@ We have just released [Craftable PRO](https://craftable.pro) - the premium versi
 
 ## About ##
 
-Hi Crafter, welcome to the official documentation for Craftable 6 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
+Hi Crafter, welcome to the official documentation for Craftable 8 - a Laravel-based open-source toolkit for building administration interfaces. It's an administration area minimalistic template. A starting point for developing back-office systems, intranets or a CMS systems.
 
 ![Craftable administration area example](https://www.getcraftable.com/docs/5.0/images/posts-crud.png "Craftable administration area example")
 
@@ -86,7 +86,7 @@ Now you can create a new Craftable project:
 craftable new my_project
 ```
 
-This will install Craftable using latest Laravel version (currently 6). If you prefer tu use latest LTS Laravel version (currently also 6), use `--lts` flag:
+This will install Craftable using latest Laravel version. If you prefer tu use latest LTS Laravel version, use `--lts` flag:
 ```bash
 craftable new --lts my_project
 ```
