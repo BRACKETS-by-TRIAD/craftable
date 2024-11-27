@@ -12,6 +12,7 @@
         "cms",
         "laravel"
     ],
+    "abandoned": "www.craftable.pro",
     "license": "MIT",
     "type": "project",
     "authors": [
